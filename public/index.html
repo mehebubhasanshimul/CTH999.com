@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#062229"/>
     <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     
-    <title>CTH999.COM | কমপ্লিট ডেমো গেমিং আর্কিটেকচার</title>
+    <title>CTH999.COM | ক্যাসিনো, স্লটস ও লাইভ গেমিং</title>
     <link rel="shortcut icon" href="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=100&q=80"/>
     
     <style>
@@ -28,85 +28,101 @@
             overflow-x: hidden;
         }
 
-        /* হেডার */
+        /* হেডার লেআউট (7133.jpg লুকে) */
         header {
             width: 100%; background: #04191f; padding: 12px 15px;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid #0d4654; position: sticky; top: 0; z-index: 100;
         }
-        .logo-area { display: flex; align-items: center; gap: 10px; }
-        .logo-img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid var(--primary-teal); } 
-        .logo-text { font-size: 20px; font-weight: bold; color: var(--primary-teal); }
+        .logo-area { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .logo-img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--primary-teal); } 
+        .logo-text { font-size: 18px; font-weight: bold; color: var(--primary-teal); }
         
-        .auth-btns button { padding: 8px 16px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 14px; }
+        /* হেডার ইউজার প্যানেল */
+        .auth-btns button { padding: 8px 16px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px; }
         .login-btn { background: #0e3d47; color: #fff; margin-right: 8px; border: 1px solid #1c6373 !important; }
         .reg-btn { background: linear-gradient(180deg, #ffe600, #cc9900); color: #000; }
-        .user-badge { display: none; background: #0a353f; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--primary-teal); font-size: 13px; font-weight: bold; color: var(--primary-teal); }
+        
+        .user-profile-header { display: none; align-items: center; gap: 8px; }
+        .header-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--btn-yellow); }
+        .header-balance-box { background: #09343f; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: var(--primary-teal); border: 1px solid #1c6373; display: flex; align-items: center; gap: 4px; }
+
+        /* কুইক অ্যাকশন বাটন (7134.jpg লুকে) */
+        .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 12px 5px 12px; }
+        .action-btn { padding: 12px; border-radius: 8px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
+        .dep-btn { background: linear-gradient(180deg, #d87c04, #aa5f00); }
+        .wit-btn { background: linear-gradient(180deg, #0e6375, #083f4b); border: 1px solid #1c6373; }
 
         /* ভিউ কন্টেইনারস */
-        .page-view { display: none; width: 100%; max-width: 1200px; margin: 0 auto; padding: 15px; }
+        .page-view { display: none; width: 100%; max-width: 1200px; margin: 0 auto; padding: 12px; }
         .page-view.active { display: block; }
 
-        /* হোম পেজ এলিমেন্টস */
-        .banner-box { width: 100%; height: 160px; border-radius: 10px; background: linear-gradient(135deg, #09343f, #174f5e); margin-bottom: 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-teal); font-size: 18px; border: 1px solid #1c6373; text-transform: uppercase; }
-        .jackpot-container { background: #04161a; border-radius: 8px; padding: 12px; text-align: center; border: 1px dashed var(--primary-teal); margin-bottom: 15px; }
-        .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 5px; }
-        .jackpot-counter { font-size: 22px; font-weight: bold; color: #fff; font-family: monospace; }
+        /* নোটিশ বার */
+        .notice-bar { background: #04161a; padding: 8px 15px; font-size: 12px; color: #8da1a5; display: flex; gap: 8px; align-items: center; margin: 5px 12px; border-radius: 6px; }
+
+        /* ক্যাটাগরি ফিল্টার বার */
+        .filter-scroll { display: flex; gap: 8px; margin: 15px 12px 5px 12px; overflow-x: auto; white-space: nowrap; }
+        .filter-btn { background: #09343f; border: 1px solid #1c6373; padding: 8px 16px; border-radius: 6px; color: #fff; font-size: 12px; font-weight: bold; cursor: pointer; }
+        .filter-btn.active { background: var(--primary-teal); color: #000; border-color: var(--primary-teal); }
+
+        /* লাইভ জ্যাকপট কাউন্টার */
+        .jackpot-container { background: linear-gradient(180deg, #04191f, #09343f); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #1c6373; margin-bottom: 15px; position: relative; }
+        .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .jackpot-counter { font-size: 24px; font-weight: bold; color: #fff; font-family: monospace; letter-spacing: 1px; }
         
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 10px 0; border-left: 4px solid var(--primary-teal); padding-left: 8px; }
-        .section-title { font-size: 15px; font-weight: bold; color: var(--primary-teal); }
-        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .game-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #0d4654; display: flex; flex-direction: column; cursor: pointer; }
-        .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #04191f; }
-        .game-info { padding: 6px; text-align: center; font-size: 11px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); }
+        /* গেম সেকশন ও ৩-কলাম গ্রিড */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin: 15px 0 10px 0; border-left: 3px solid var(--primary-teal); padding-left: 8px; }
+        .section-title { font-size: 14px; font-weight: bold; color: var(--primary-teal); text-transform: uppercase; }
+        .see-all { font-size: 12px; color: #8da1a5; cursor: pointer; }
+        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .game-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #0d4654; display: flex; flex-direction: column; cursor: pointer; position: relative; }
+        .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .game-info { padding: 5px; text-align: center; font-size: 10px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* প্রমোশন পেজ (7128.jpg লুকে) */
-        .promo-card { background: #09343f; border-radius: 10px; margin-bottom: 15px; overflow: hidden; border: 1px solid #1c6373; }
-        .promo-banner-placeholder { width: 100%; height: 150px; background: linear-gradient(45deg, #120224, #1b0433); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #ff007c; font-size: 16px; border-bottom: 1px solid #1c6373; }
-        .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .promo-title { font-size: 14px; font-weight: bold; }
-        .view-btn { background: #ffcc00; color: #000; border: none; padding: 5px 12px; font-size: 12px; font-weight: bold; border-radius: 4px; cursor: pointer; }
+        /* প্রমোশন পেজ ভিউ */
+        .promo-card { background: #09343f; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #1c6373; }
+        .promo-banner { width: 100%; height: 130px; background: linear-gradient(45deg, #120224, #09343f); display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-teal); font-size: 14px; }
+        .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+        .view-btn { background: #ffcc00; color: #000; border: none; padding: 4px 10px; font-size: 11px; font-weight: bold; border-radius: 4px; }
 
-        /* ইনভাইট পেজ (7129.jpg লুকে) */
+        /* ইনভাইট পেজ ভিউ */
         .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .stat-box { padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 13px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
-        .stat-blue { background: linear-gradient(135deg, #2af598, #009efd); color: #fff; }
-        .stat-purple { background: linear-gradient(135deg, #b182ff, #7033ff); color: #fff; }
-        .stat-label { font-size: 11px; opacity: 0.9; margin-bottom: 5px; text-transform: uppercase; }
-        .invite-box { background: #fff; color: #000; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 15px; }
-        .invite-box input { width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; text-align: center; margin-top: 5px; font-weight: bold; }
+        .stat-box { padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; }
+        .stat-blue { background: linear-gradient(135deg, #2af598, #009efd); }
+        .stat-purple { background: linear-gradient(135deg, #b182ff, #7033ff); }
+        .stat-label { font-size: 10px; opacity: 0.8; margin-bottom: 4px; }
+        .invite-box { background: #fff; color: #000; padding: 15px; border-radius: 8px; text-align: center; }
+        .invite-box input { width: 100%; padding: 8px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; text-align: center; margin-top: 5px; font-weight: bold; color: #333; }
 
-        /* রিওয়ার্ড পেজ (7130.jpg লুকে) */
-        .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .reward-box { border-radius: 10px; padding: 20px; text-align: center; font-weight: bold; color: #fff; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+        /* রিওয়ার্ড পেজ ভিউ */
+        .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .reward-box { border-radius: 8px; padding: 18px; text-align: center; font-weight: bold; font-size: 14px; border: 1px solid rgba(255,255,255,0.05); }
         .rew-1 { background: linear-gradient(135deg, #00b965, #00ebd3); }
-        .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7, #6fb1fc); }
+        .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7); }
         .rew-3 { background: linear-gradient(135deg, #f12711, #f5af19); }
         .rew-4 { background: linear-gradient(135deg, #f857a6, #ff5858); }
-        .reward-icon { font-size: 30px; margin-bottom: 8px; }
 
-        /* মেম্বার পেজ (7131.jpg লুকে - লাইট ড্যাশবোর্ড) */
-        .member-bg { background: #f4f6f9; color: #333; padding: 20px; border-radius: 12px; border: 1px solid #ddd; }
-        .profile-card { background: #fff; padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .avatar { width: 55px; height: 55px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 24px; }
-        .profile-info h3 { font-size: 16px; color: #111; }
-        .profile-info p { font-size: 12px; color: #666; margin-top: 2px; }
-        .balance-display { font-size: 20px; font-weight: bold; color: #e65100; margin-top: 5px; }
-        .member-grid-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; }
-        .menu-icon-box { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
-        .menu-circle { width: 45px; height: 45px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .menu-title { font-size: 11px; font-weight: 600; color: #555; }
+        /* মেম্বার ড্যাশবোর্ড ভিউ */
+        .member-bg { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
+        .profile-card { background: #fff; padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 15px; }
+        .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .profile-info h3 { font-size: 15px; color: #111; }
+        .profile-info p { font-size: 11px; color: #666; }
+        .balance-display { font-size: 18px; font-weight: bold; color: #e65100; margin-top: 2px; }
+        .member-grid-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
+        .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .menu-title { font-size: 10px; font-weight: 600; color: #555; }
 
-        /* ফিক্সড বটম নেভিগেশন */
+        /* বটম নেভিগেশন বার */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
         .nav-item.active { color: var(--primary-teal); }
         .nav-icon { font-size: 18px; margin-bottom: 2px; }
-        .nav-item-center { background: linear-gradient(180deg, #00ffcc, #009977); width: 44px; height: 44px; border-radius: 50%; justify-content: center; color: #fff !important; transform: translateY(-8px); }
+        .nav-item-center { background: linear-gradient(180deg, #00ffcc, #009977); width: 42px; height: 42px; border-radius: 50%; justify-content: center; color: #fff !important; transform: translateY(-6px); }
 
-        /* পপ-আপ মডাল */
+        /* মডাল */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 380px; border: 1px solid var(--primary-teal); position: relative; }
+        .modal-content { background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 360px; border: 1px solid var(--primary-teal); position: relative; }
         .close-btn { position: absolute; top: 12px; right: 18px; font-size: 22px; cursor: pointer; color: #aaa; }
         .modal h2 { margin-bottom: 15px; color: var(--primary-teal); text-align: center; font-size: 18px; }
         .form-group { margin-bottom: 12px; }
@@ -126,30 +142,43 @@
             <button class="login-btn" onclick="openModal('loginModal')">Login</button>
             <button class="reg-btn" onclick="openModal('regModal')">Register</button>
         </div>
-        <div class="user-badge" id="headerUserBadge">t3045834973</div>
+        <div class="user-profile-header" id="headerUserPanel">
+            <div class="header-balance-box">৳ <span id="headerBalance">10.37</span> 🔄</div>
+            <img class="header-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Avatar">
+        </div>
     </header>
 
+    <div class="quick-actions">
+        <button class="action-btn dep-btn" onclick="handleProtectedAction('Deposit')">💰 Deposit</button>
+        <button class="action-btn wit-btn" onclick="handleProtectedAction('Withdraw')">💳 Withdraw</button>
+    </div>
+
+    <div class="notice-bar">
+        📢 <marquee scrollamount="3">Welcome to CTH999.COM! Get 82% Lucky Draw Bonus on your first deposit up to 5,000 TK.</marquee>
+    </div>
+
+    <div class="filter-scroll">
+        <button class="filter-btn active" onclick="changeTab('home')">🔥 HOT GAMES</button>
+        <button class="filter-btn" onclick="handleProtectedAction('Favorites')">⭐ FAVORITES</button>
+        <button class="filter-btn" onclick="handleProtectedAction('Slots Category')">🎰 SLOTS</button>
+    </div>
+
     <div id="homeView" class="page-view active">
-        <div class="banner-box">CTH999 WELCOME BONUS 100%</div>
         <div class="jackpot-container">
-            <div class="jackpot-title">🎰 Mega Jackpot 🎰</div>
-            <div class="jackpot-counter" id="jackpotBox">$102,678,159.00</div>
+            <div class="jackpot-title">🎰 Jackpot 🎰</div>
+            <div class="jackpot-counter" id="jackpotBox">123,590,076.19</div>
         </div>
         <div id="gameSectionsContainer"></div>
     </div>
 
     <div id="promotionView" class="page-view">
         <div class="promo-card">
-            <div class="promo-banner-placeholder" style="background: linear-gradient(45deg, #112c33, #04191f);">TAKAA ALLIANCE THE CHAPTER OF POWER</div>
-            <div class="promo-footer"><span class="promo-title">TAKAA ALLIANCE</span><button class="view-btn">view</button></div>
+            <div class="promo-banner" style="background: linear-gradient(135deg, #09343f, #1c6373);">TAKAA ALLIANCE — CHAPTER OF POWER</div>
+            <div class="promo-footer"><span>TAKAA ALLIANCE</span><button class="view-btn">view</button></div>
         </div>
         <div class="promo-card">
-            <div class="promo-banner-placeholder" style="background: linear-gradient(45deg, #4a0e2e, #1a0210);">SURPRISE BONUS - SPIN 50,000 TK</div>
-            <div class="promo-footer"><span class="promo-title">Spin for Your Dream Reward!</span><button class="view-btn">view</button></div>
-        </div>
-        <div class="promo-card">
-            <div class="promo-banner-placeholder" style="background: linear-gradient(45deg, #071f42, #020b17);">INVITE 1 PERSON & EARN 1000 TK</div>
-            <div class="promo-footer"><span class="promo-title">Invite 1 Person and Earn 1000</span><button class="view-btn">view</button></div>
+            <div class="promo-banner" style="background: linear-gradient(135deg, #440a2c, #70124b);">SURPRISE SPIN BONUS — 50,000 TK</div>
+            <div class="promo-footer"><span>Spin for Your Dream Reward!</span><button class="view-btn">view</button></div>
         </div>
     </div>
 
@@ -161,27 +190,27 @@
             <div class="stat-box stat-blue"><div class="stat-label">Valid Referral</div>--</div>
         </div>
         <div class="invite-box">
-            <div style="font-weight:bold; font-size:14px; margin-bottom:5px;">Share with your friends</div>
+            <div style="font-weight:bold; font-size:13px; margin-bottom:5px;">Share link with your friends</div>
             <input type="text" value="http://www.cth-999.vip/?r=t304583" readonly>
         </div>
     </div>
 
     <div id="rewardView" class="page-view">
         <div class="reward-grid">
-            <div class="reward-box rew-1"><div class="reward-icon">🎁</div>Bonus</div>
-            <div class="reward-box rew-2"><div class="reward-icon">📅</div>Sign In</div>
-            <div class="reward-box rew-3"><div class="reward-icon">💰</div>Rescue Fund</div>
-            <div class="reward-box rew-4"><div class="reward-icon">👥</div>Invite Friends</div>
+            <div class="reward-box rew-1">Bonus</div>
+            <div class="reward-box rew-2">Sign In</div>
+            <div class="reward-box rew-3">Rescue fund</div>
+            <div class="reward-box rew-4">Invite Friends</div>
         </div>
     </div>
 
     <div id="memberView" class="page-view">
         <div class="member-bg">
             <div class="profile-card">
-                <div class="avatar">👩</div>
+                <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" alt="User">
                 <div class="profile-info">
                     <h3 id="panelUser">t3045834973</h3>
-                    <p>Joined: 2026-05-29</p>
+                    <p>Joined: 2026-06-14</p>
                     <div class="balance-display">৳ <span id="panelBalance">10.37</span></div>
                 </div>
             </div>
@@ -193,16 +222,16 @@
         <div class="nav-item active" onclick="changeTab('home', this)">
             <div class="nav-icon">🏠</div><div>Home</div>
         </div>
-        <div class="nav-item" onclick="changeTab('promotion', this)">
+        <div class="nav-item" onclick="handleNavigationWithAuth('promotion', this)">
             <div class="nav-icon">🎁</div><div>Promotion</div>
         </div>
-        <div class="nav-item nav-item-center" onclick="changeTab('invite', this)">
+        <div class="nav-item nav-item-center" onclick="handleNavigationWithAuth('invite', this)">
             <div class="nav-icon">🔗</div>
         </div>
-        <div class="nav-item" onclick="changeTab('reward', this)">
+        <div class="nav-item" onclick="handleNavigationWithAuth('reward', this)">
             <div class="nav-icon">🏆</div><div>Reward</div>
         </div>
-        <div class="nav-item" onclick="changeTab('member', this)">
+        <div class="nav-item" onclick="handleNavigationWithAuth('member', this)">
             <div class="nav-icon">👤</div><div>Member</div>
         </div>
     </div>
@@ -210,8 +239,8 @@
     <div id="regModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('regModal')">&times;</span>
-            <h2>Create Account</h2>
-            <form onsubmit="processAuth(event, 'reg')">
+            <h2>Create New Account</h2>
+            <form onsubmit="executeAuth(event, 't3045834973')">
                 <div class="form-group"><label>Username</label><input type="text" id="regUser" value="t3045834973" required></div>
                 <div class="form-group"><label>Password</label><input type="password" required></div>
                 <button type="submit" class="submit-btn">Register</button>
@@ -222,8 +251,8 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
-            <h2>Login</h2>
-            <form onsubmit="processAuth(event, 'login')">
+            <h2>Account Login</h2>
+            <form onsubmit="executeAuth(event, 't3045834973')">
                 <div class="form-group"><label>Username</label><input type="text" id="loginUser" value="t3045834973" required></div>
                 <div class="form-group"><label>Password</label><input type="password" required></div>
                 <button type="submit" class="submit-btn">Login</button>
@@ -232,13 +261,12 @@
     </div>
 
     <script>
-        let isLoggedIn = false;
-        let activeUsername = "Guest";
+        let sessionActive = false;
 
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // ট্যাব সুইচিং লজিক
+        // রুট ট্যাব চেঞ্জার
         function changeTab(target, element) {
             document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
@@ -247,62 +275,77 @@
             if(element) element.classList.add('active');
         }
 
-        // লগইন ও নিবন্ধন প্রসেস সিমিউলেশন
-        function processAuth(event, mode) {
+        // 🔒 লগইন ভ্যালিডেশন চেক (লগইন ছাড়া বাটন ব্লক করার ইঞ্জিন)
+        function handleNavigationWithAuth(target, element) {
+            if (!sessionActive) {
+                openModal('loginModal');
+            } else {
+                changeTab(target, element);
+            }
+        }
+
+        function handleProtectedAction(actionName) {
+            if (!sessionActive) {
+                openModal('loginModal');
+            } else {
+                alert(actionName + ' feature running in Demo Mode.');
+            }
+        }
+
+        // লগইন সফল হওয়ার প্রসেস
+        function executeAuth(event, defaultUser) {
             event.preventDefault();
-            isLoggedIn = true;
-            activeUsername = mode === 'reg' ? document.getElementById('regUser').value : document.getElementById('loginUser').value;
+            sessionActive = true;
             
             document.getElementById('headerAuthBox').style.display = 'none';
-            document.getElementById('headerUserBadge').style.display = 'block';
-            document.getElementById('headerUserBadge').innerText = activeUsername;
-            
-            document.getElementById('panelUser').innerText = activeUsername;
+            document.getElementById('headerUserPanel').style.display = 'flex';
+            document.getElementById('panelUser').innerText = defaultUser;
             
             closeModal('regModal');
             closeModal('loginModal');
-            changeTab('member');
+            changeTab('home');
             
-            // নিচের মেনুতে Member বাটন হাইলাইট করা
+            // হোম ট্যাব হাইলাইট রিস্টোর করা
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.nav-item')[4].classList.add('active');
+            document.querySelectorAll('.nav-item')[0].classList.add('active');
+            alert('লগইন সফল হয়েছে! এখন সমস্ত ডেমো গেম এবং প্যানেল আনলকড।');
         }
 
-        // জ্যাকপট স্ক্রিপ্ট
+        // লাইভ র্যান্ডম জ্যাকপট সিমিউলেশন
         setInterval(() => {
-            let num = Math.floor(100000000 + Math.random() * 90000000);
-            document.getElementById('jackpotBox').innerText = "$" + num.toLocaleString() + ".99";
-        }, 2500);
+            let num = 123590076 + Math.floor(Math.random() * 5000);
+            let decimals = Math.floor(Math.random() * 99);
+            document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
+        }, 3000);
 
-        // এপিআই থেকে ডেটা রেন্ডারিং
+        // ডাটা রেন্ডার মেকানিজম
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
                 .then(data => {
-                    // ১. গেম জেনারেট করা
-                    const sectContainer = document.getElementById('gameSectionsContainer');
-                    let sectionsHTML = '';
+                    const container = document.getElementById('gameSectionsContainer');
+                    let finalHTML = '';
+
                     data.categories.forEach(cat => {
                         let gridHTML = '';
                         cat.list.forEach(game => {
                             gridHTML += `
-                                <div class="game-card" onclick="alert('${game.name} ডেমো মোডে চালু হচ্ছে...')">
+                                <div class="game-card" onclick="handleProtectedAction('${game.name}')">
                                     <img class="game-img" src="${game.image}" alt="${game.name}">
                                     <div class="game-info">${game.name}</div>
                                 </div>
                             `;
                         });
-                        sectionsHTML += `
+                        finalHTML += `
                             <div class="section-header">
                                 <div class="section-title">${cat.title}</div>
-                                <div class="see-all">See All</div>
+                                <div class="see-all">See All ›</div>
                             </div>
                             <div class="game-grid">${gridHTML}</div>
                         `;
                     });
-                    sectContainer.innerHTML = sectionsHTML;
+                    container.innerHTML = finalHTML;
 
-                    // ২. ড্যাশবোর্ড মেনু আইকন রেন্ডার করা (7131.jpg লুকে)
                     const menuContainer = document.getElementById('memberMenuGrid');
                     let menuHTML = '';
                     data.memberMenu.forEach(item => {
