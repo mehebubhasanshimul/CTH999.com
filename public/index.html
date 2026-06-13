@@ -71,17 +71,15 @@
         .header-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--btn-yellow); }
         .header-balance-box { background: #09343f; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: var(--primary-teal); border: 1px solid #1c6373; display: flex; align-items: center; gap: 4px; }
 
-        /* অ্যাকশন বাটন */
+        /* কুইক বাটন */
         .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 12px 5px 12px; }
         .action-btn { padding: 12px; border-radius: 8px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
         .dep-btn { background: linear-gradient(180deg, #d87c04, #aa5f00); }
         .wit-btn { background: linear-gradient(180deg, #0e6375, #083f4b); border: 1px solid #1c6373; }
 
-        /* ভিউ কন্টেইনার */
         .page-view { display: none; width: 100%; max-width: 1200px; margin: 0 auto; padding: 12px; }
         .page-view.active { display: block; }
 
-        /* ব্যানার বক্স */
         .banner-box {
             width: 100%; height: 160px; border-radius: 10px;
             background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png');
@@ -89,20 +87,17 @@
             border: 1px solid #0d4654; margin-bottom: 15px;
         }
 
-        /* নোটিশ বার */
         .notice-bar { background: #04161a; padding: 8px 15px; font-size: 12px; color: #8da1a5; display: flex; gap: 8px; align-items: center; margin: 5px 12px; border-radius: 6px; }
 
-        /* ফিল্টার বার */
         .filter-scroll { display: flex; gap: 8px; margin: 15px 12px 5px 12px; overflow-x: auto; white-space: nowrap; }
         .filter-btn { background: #09343f; border: 1px solid #1c6373; padding: 8px 16px; border-radius: 6px; color: #fff; font-size: 12px; font-weight: bold; cursor: pointer; }
         .filter-btn.active { background: var(--primary-teal); color: #000; border-color: var(--primary-teal); }
 
-        /* জ্যাকপট */
         .jackpot-container { background: linear-gradient(180deg, #04191f, #09343f); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #1c6373; margin-bottom: 15px; }
         .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; }
         .jackpot-counter { font-size: 24px; font-weight: bold; color: #fff; font-family: monospace; }
         
-        /* গেম গ্রিড (৩ কলাম বিন্যাস) */
+        /* গেম লেআউট গ্রিড */
         .section-header { display: flex; justify-content: space-between; align-items: center; margin: 15px 0 10px 0; border-left: 3px solid var(--primary-teal); padding-left: 8px; }
         .section-title { font-size: 14px; font-weight: bold; color: var(--primary-teal); text-transform: uppercase; }
         .see-all { font-size: 12px; color: #8da1a5; cursor: pointer; }
@@ -111,7 +106,7 @@
         .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #04191f; }
         .game-info { padding: 5px; text-align: center; font-size: 10px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* ডিপোজিট ও উইথড্র স্টাইল */
+        /* গেটওয়ে প্যানেলস */
         .dep-label-title { font-size: 14px; font-weight: bold; color: #fff; margin: 15px 0 8px 0; border-left: 3px solid var(--btn-yellow); padding-left: 6px; }
         .method-flex { display: flex; gap: 10px; margin-bottom: 15px; }
         .method-card { background: #09343f; border: 1px solid #1c6373; padding: 12px; border-radius: 8px; text-align: center; width: 100px; cursor: pointer; font-weight: bold; font-size: 13px; }
@@ -121,15 +116,12 @@
         .amt-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 15px; }
         .amt-btn { background: #09343f; border: 1px solid #1c6373; padding: 10px 2px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: bold; cursor: pointer; }
         .amt-input { width: 100%; padding: 12px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 15px; font-weight: bold; margin-bottom: 20px; text-align: center; }
-        .next-btn { width: 100%; padding: 14px; background: #263a40; border: none; border-radius: 6px; color: #666; font-weight: bold; font-size: 15px; cursor: not-allowed; }
         
         .withdraw-card-view { background: linear-gradient(135deg, #00f2fe, #4facfe); padding: 20px; border-radius: 12px; color: #fff; position: relative; margin-bottom: 20px; }
         .w-card-brand { font-size: 18px; font-weight: bold; }
         .w-card-number { font-size: 22px; font-weight: bold; margin: 15px 0; letter-spacing: 1px; }
-        .add-account-circle { position: absolute; bottom: -10px; right: 20px; background: var(--danger-red); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; cursor: pointer; border: none; }
         .info-row { display: flex; justify-content: space-between; font-size: 13px; color: #8da1a5; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #0d4654; }
 
-        /* প্রমোশন, ইনভাইট, মেম্বার ভিউ */
         .promo-card { background: #09343f; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #1c6373; }
         .promo-banner { width: 100%; height: 130px; background: linear-gradient(135deg, #09343f, #1c6373); }
         .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
@@ -138,13 +130,6 @@
         .stat-box { padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; color: #fff; }
         .stat-blue { background: linear-gradient(135deg, #2af598, #009efd); }
         .stat-purple { background: linear-gradient(135deg, #b182ff, #7033ff); }
-        .stat-label { font-size: 10px; opacity: 0.8; margin-bottom: 4px; }
-        .invite-box { background: #fff; color: #000; padding: 15px; border-radius: 8px; text-align: center; }
-        .invite-box input { width: 100%; padding: 8px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; text-align: center; margin-top: 5px; font-weight: bold; color: #333; }
-        .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .reward-box { border-radius: 8px; padding: 18px; text-align: center; font-weight: bold; font-size: 14px; color: #fff; }
-        .rew-1 { background: linear-gradient(135deg, #00b965, #00ebd3); }
-        .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7); }
         .member-bg { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
         .profile-card { background: #fff; padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 15px; }
         .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
@@ -163,7 +148,7 @@
         .login-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #8da1a5; margin: 15px 0 25px 0; }
         .yellow-submit-btn { width: 100%; padding: 14px; background: #ffcc00; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; color: #000; cursor: pointer; box-shadow: 0 4px 15px rgba(255,204,0,0.3); }
 
-        /* Bottom Nav */
+        /* Bottom Fixed Bar */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
         .nav-item.active { color: var(--primary-teal); }
@@ -219,17 +204,37 @@
         <div class="banner-box"></div>
         <div class="jackpot-container">
             <div class="jackpot-title">🎰 Jackpot 🎰</div>
-            <div class="jackpot-counter" id="jackpotBox">123,590,076.19</div>
+            <div class="jackpot-counter" id="jackpotBox">123,591,624.89</div>
         </div>
         
         <div class="section-header">
-            <div class="section-title">🚀 CRASH GAMES (POPULAR)</div>
+            <div class="section-title">🔥 POPULAR LIVE CASINO & SLOTS</div>
             <div class="see-all">Play Now ›</div>
         </div>
-        <div class="game-grid" style="margin-bottom: 15px;">
+        <div class="game-grid" id="staticDemoGamesGrid" style="margin-bottom: 20px;">
+            <div class="game-card" onclick="redirectAndPlayRealGame('Super Ace', 'https://demo.jilicaco.com/slot/super-ace')">
+                <img class="game-img" src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=300&q=80" alt="Super Ace">
+                <div class="game-info" style="background: linear-gradient(90deg, #ff9900, #cc5500);">Super Ace (JILI)</div>
+            </div>
             <div class="game-card" onclick="redirectAndPlayRealGame('Aviator', 'https://aviator-demo.spribegaming.com/?currency=USD&operator=demo&jurisdiction=CW&lang=EN&return_url=https://spribe.co/games&user=11217&token=QLI9zp8EkArEUiEocyTCWWny472cclKi')">
                 <img class="game-img" src="https://i.ibb.co.com/7186.jpg" alt="Aviator">
-                <div class="game-info" style="background: #e61c24 !important;">Aviator (Demo Play)</div>
+                <div class="game-info" style="background: linear-gradient(90deg, #ff0055, #990022);">Aviator (Spribe)</div>
+            </div>
+            <div class="game-card" onclick="redirectAndPlayRealGame('Mini Roulette', 'https://turbo.spribegaming.com/mini-roulette?currency=USD&operator=demo&jurisdiction=CW&lang=EN&return_url=https:%2F%2Fspribe.co%2Fgames&user=32419&token=6OpUvZITUXgAckxxGnFxcg7q84L48utP')">
+                <img class="game-img" src="https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=300&q=80" alt="Mini Roulette">
+                <div class="game-info" style="background: linear-gradient(90deg, #2af598, #009efd); color:#000;">Mini Roulette</div>
+            </div>
+            <div class="game-card" onclick="redirectAndPlayRealGame('Chicken Game', 'https://pilot-chicken-demo.spribegaming.com/?currency=USD&operator=demo&jurisdiction=CW&lang=EN&return_url=https%3A%2F%2Fspribe.co%2Fgames&user=18217&token=l6JXFmEFuBAcQfYfGfW5dVihpaRWxXXG')">
+                <img class="game-img" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&q=80" alt="Chicken">
+                <div class="game-info" style="background: linear-gradient(90deg, #ffcc00, #b88600);">Chicken Game</div>
+            </div>
+            <div class="game-card" onclick="redirectAndPlayRealGame('Springbuilder Launch', 'https://games.springbuilder.site/LaunchGame')">
+                <img class="game-img" src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=300&q=80" alt="Springbuilder">
+                <div class="game-info" style="background: linear-gradient(90deg, #b182ff, #7033ff);">Springbuilder</div>
+            </div>
+            <div class="game-card" onclick="redirectAndPlayRealGame('Posted Market', 'https://pg.pascalgaming.com/launcher/launch?launchToken=29d30b04-650a-44cb-8297-54cc8b242e16&returnPath=%2Flaunch%3FgameId%3D210%26mode%3Dreal%26partnerKey%3D9b0b0a92-f1a0-48e7-8fab-71b243140207%26culture%3Den%26token%3Dtoken_155')">
+                <img class="game-img" src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=300&q=80" alt="Posted Market">
+                <div class="game-info" style="background: linear-gradient(90deg, #00ffcc, #005544); color: #000;">Posted Market</div>
             </div>
         </div>
 
@@ -342,7 +347,7 @@
             if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
         }
 
-        // 🕹️ নিরাপদ প্লেয়ার ইঞ্জিন
+        // 🕹️ পপ-আপ প্লেয়ার (সিকিউরিটি এরর এড়ানোর জন্য ডিরেক্ট সেশন হ্যান্ডলার)
         function redirectAndPlayRealGame(gameName, gameUrl) {
             if (!sessionActive) {
                 changeTab('loginPage');
@@ -381,12 +386,12 @@
         }
 
         setInterval(() => {
-            let num = 123590076 + Math.floor(Math.random() * 5000);
+            let num = 123591624 + Math.floor(Math.random() * 80);
             let decimals = Math.floor(Math.random() * 99);
             document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
         }, 3000);
 
-        // 🔗 ডাইনামিক এপিআই রেন্ডারিং কোর ইঞ্জিন (শুধুমাত্র রিয়েল এপিআই রেসপন্স হ্যান্ডলার)
+        // 🔗 এপিআই ম্যাপিং ডাটা স্ট্রাকচার
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
@@ -394,7 +399,6 @@
                     const container = document.getElementById('gameSectionsContainer');
                     let finalHTML = '';
 
-                    // শুধুমাত্র এপিআই-এর কাস্টম ক্যাটাগরি থাকলে তা লোড হবে (সব ফেক ডেমো রিমুভড)
                     if (data.categories && data.categories.length > 0) {
                         data.categories.forEach(cat => {
                             let gridHTML = '';
@@ -403,24 +407,22 @@
                                     <div class="game-card" onclick="redirectAndPlayRealGame('${game.name}', '${game.gameUrl}')">
                                         <img class="game-img" src="${game.image}" alt="${game.name}">
                                         <div class="game-info">${game.name}</div>
-                                    </div>
-                                `;
+                                    </div>`;
                             });
                             finalHTML += `
                                 <div class="section-header">
                                     <div class="section-title">${cat.title}</div>
                                     <div class="see-all">See All ›</div>
                                 </div>
-                                <div class="game-grid">${gridHTML}</div>
-                            `;
+                                <div class="game-grid">${gridHTML}</div>`;
                         });
                         container.innerHTML = finalHTML;
                     }
 
-                    // মেম্বার কন্ট্রোল প্যানেল গ্রিড
+                    // প্যানেল আইকন
                     const menuContainer = document.getElementById('memberMenuGrid');
-                    let menuHTML = '';
-                    if (data.memberMenu) {
+                    if (data.memberMenu && menuContainer) {
+                        let menuHTML = '';
                         data.memberMenu.forEach(item => {
                             menuHTML += `
                                 <div class="menu-icon-box" onclick="alert('${item.name} opened.')">
@@ -431,7 +433,7 @@
                         menuContainer.innerHTML = menuHTML;
                     }
                 })
-                .catch(err => console.error("API Fetch Error: ", err));
+                .catch(err => console.error("Staging fetch failed.", err));
         });
     </script>
 </body>
