@@ -6,10 +6,8 @@
     <meta name="theme-color" content="#062229"/>
     <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     
-    <title>CTH999.COM | ক্যাসিনো, স্লটস ও লাইভ গেমিং বাংলাদেশ</title>
-    <meta name="description" content="CTH999.COM বাংলাদেশের সবচেয়ে নিরাপদ ও প্রফেশনাল গেমিং প্ল্যাটফর্ম।"/>
-    
-    <link rel="shortcut icon" href="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png"/>
+    <title>CTH999.COM | কমপ্লিট ডেমো গেমিং আর্কিটেকচার</title>
+    <link rel="shortcut icon" href="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=100&q=80"/>
     
     <style>
         :root { 
@@ -26,156 +24,196 @@
             color: #fff; 
             min-height: calc(var(--vh) * 100);
             display: flex; flex-direction: column;
-            padding-bottom: 70px; /* বটম বারের জন্য জায়গা */
+            padding-bottom: 75px;
             overflow-x: hidden;
         }
 
-        /* প্রফেশনাল হেডার (স্ক্রিনশটের মতো লিনিয়ার ডিজাইন) */
+        /* হেডার */
         header {
             width: 100%; background: #04191f; padding: 12px 15px;
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid #0d4654; position: sticky; top: 0; z-index: 100;
         }
         .logo-area { display: flex; align-items: center; gap: 10px; }
-        .logo-img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; } 
+        .logo-img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 1px solid var(--primary-teal); } 
         .logo-text { font-size: 20px; font-weight: bold; color: var(--primary-teal); }
         
         .auth-btns button { padding: 8px 16px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 14px; }
         .login-btn { background: #0e3d47; color: #fff; margin-right: 8px; border: 1px solid #1c6373 !important; }
         .reg-btn { background: linear-gradient(180deg, #ffe600, #cc9900); color: #000; }
+        .user-badge { display: none; background: #0a353f; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--primary-teal); font-size: 13px; font-weight: bold; color: var(--primary-teal); }
 
-        /* হিরো ব্যানার */
-        .hero-banner { width: 100%; max-width: 1200px; margin: 12px auto; padding: 0 12px; }
-        .banner-box {
-            width: 100%; height: 160px; border-radius: 10px;
-            background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png');
-            background-size: cover; background-position: center;
-            border: 1px solid #0d4654;
-        }
+        /* ভিউ কন্টেইনারস */
+        .page-view { display: none; width: 100%; max-width: 1200px; margin: 0 auto; padding: 15px; }
+        .page-view.active { display: block; }
 
-        /* জ্যাকপট ডিসপ্লে বার */
-        .jackpot-container {
-            background: #04161a; border-radius: 8px; margin: 15px 12px; padding: 12px;
-            text-align: center; border: 1px dashed var(--primary-teal);
-        }
-        .jackpot-title { color: #ffcc00; font-size: 20px; font-weight: 900; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
-        .jackpot-counter { display: inline-flex; gap: 4px; font-size: 22px; font-weight: bold; color: #fff; background: #111; padding: 6px 12px; border-radius: 4px; border: 1px solid #222; font-family: monospace; }
-
-        /* ক্যাটাগরি কন্টেইনার */
-        .main-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 12px; flex: 1; }
+        /* হোম পেজ এলিমেন্টস */
+        .banner-box { width: 100%; height: 160px; border-radius: 10px; background: linear-gradient(135deg, #09343f, #174f5e); margin-bottom: 15px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--primary-teal); font-size: 18px; border: 1px solid #1c6373; text-transform: uppercase; }
+        .jackpot-container { background: #04161a; border-radius: 8px; padding: 12px; text-align: center; border: 1px dashed var(--primary-teal); margin-bottom: 15px; }
+        .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 5px; }
+        .jackpot-counter { font-size: 22px; font-weight: bold; color: #fff; font-family: monospace; }
         
-        .section-header { 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin: 20px 0 10px 0; border-left: 4px solid var(--primary-teal); padding-left: 8px; 
-        }
-        .section-title { font-size: 16px; font-weight: bold; color: var(--primary-teal); text-transform: uppercase; }
-        .see-all { font-size: 12px; color: #999; cursor: pointer; background: #0a353f; padding: 3px 8px; border-radius: 4px; }
-        
-        /* গেম গ্রিড (স্ক্রিনশটের ৩ কলাম বিন্যাস) */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 10px 0; border-left: 4px solid var(--primary-teal); padding-left: 8px; }
+        .section-title { font-size: 15px; font-weight: bold; color: var(--primary-teal); }
         .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .game-card { 
-            background: var(--card-bg); border-radius: 8px; overflow: hidden; 
-            border: 1px solid #0d4654; position: relative; display: flex; flex-direction: column;
-        }
-        .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .game-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #0d4654; display: flex; flex-direction: column; cursor: pointer; }
+        .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #04191f; }
         .game-info { padding: 6px; text-align: center; font-size: 11px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); }
 
-        /* 📱 ফিক্সড বটম নেভিগেশন বার (স্ক্রিনশটের হুবহু ডিজাইন) */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
-            background: #031418; border-top: 1px solid #0d4654;
-            display: flex; justify-content: space-around; align-items: center;
-            z-index: 1000; box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
-        }
-        .nav-item {
-            display: flex; flex-direction: column; align-items: center;
-            color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer;
-        }
-        .nav-item.active { color: var(--primary-teal); }
-        .nav-icon { font-size: 20px; margin-bottom: 2px; }
+        /* প্রমোশন পেজ (7128.jpg লুকে) */
+        .promo-card { background: #09343f; border-radius: 10px; margin-bottom: 15px; overflow: hidden; border: 1px solid #1c6373; }
+        .promo-banner-placeholder { width: 100%; height: 150px; background: linear-gradient(45deg, #120224, #1b0433); display: flex; align-items: center; justify-content: center; font-weight: bold; color: #ff007c; font-size: 16px; border-bottom: 1px solid #1c6373; }
+        .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .promo-title { font-size: 14px; font-weight: bold; }
+        .view-btn { background: #ffcc00; color: #000; border: none; padding: 5px 12px; font-size: 12px; font-weight: bold; border-radius: 4px; cursor: pointer; }
 
-        /* সেন্ট্রাল ইনভাইট বাটন স্পেশাল স্টাইল */
-        .nav-item-center {
-            background: linear-gradient(180deg, #00ffcc, #009977);
-            width: 44px; height: 44px; border-radius: 50%;
-            justify-content: center; color: #fff !important;
-            box-shadow: 0 0 10px rgba(0,255,204,0.4); transform: translateY(-8px);
-        }
-        .nav-item-center .nav-icon { margin-bottom: 0; font-size: 22px; }
+        /* ইনভাইট পেজ (7129.jpg লুকে) */
+        .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .stat-box { padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 13px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .stat-blue { background: linear-gradient(135deg, #2af598, #009efd); color: #fff; }
+        .stat-purple { background: linear-gradient(135deg, #b182ff, #7033ff); color: #fff; }
+        .stat-label { font-size: 11px; opacity: 0.9; margin-bottom: 5px; text-transform: uppercase; }
+        .invite-box { background: #fff; color: #000; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 15px; }
+        .invite-box input { width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; text-align: center; margin-top: 5px; font-weight: bold; }
+
+        /* রিওয়ার্ড পেজ (7130.jpg লুকে) */
+        .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .reward-box { border-radius: 10px; padding: 20px; text-align: center; font-weight: bold; color: #fff; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+        .rew-1 { background: linear-gradient(135deg, #00b965, #00ebd3); }
+        .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7, #6fb1fc); }
+        .rew-3 { background: linear-gradient(135deg, #f12711, #f5af19); }
+        .rew-4 { background: linear-gradient(135deg, #f857a6, #ff5858); }
+        .reward-icon { font-size: 30px; margin-bottom: 8px; }
+
+        /* মেম্বার পেজ (7131.jpg লুকে - লাইট ড্যাশবোর্ড) */
+        .member-bg { background: #f4f6f9; color: #333; padding: 20px; border-radius: 12px; border: 1px solid #ddd; }
+        .profile-card { background: #fff; padding: 15px; border-radius: 10px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .avatar { width: 55px; height: 55px; border-radius: 50%; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .profile-info h3 { font-size: 16px; color: #111; }
+        .profile-info p { font-size: 12px; color: #666; margin-top: 2px; }
+        .balance-display { font-size: 20px; font-weight: bold; color: #e65100; margin-top: 5px; }
+        .member-grid-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; }
+        .menu-icon-box { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .menu-circle { width: 45px; height: 45px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .menu-title { font-size: 11px; font-weight: 600; color: #555; }
+
+        /* ফিক্সড বটম নেভিগেশন */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
+        .nav-item.active { color: var(--primary-teal); }
+        .nav-icon { font-size: 18px; margin-bottom: 2px; }
+        .nav-item-center { background: linear-gradient(180deg, #00ffcc, #009977); width: 44px; height: 44px; border-radius: 50%; justify-content: center; color: #fff !important; transform: translateY(-8px); }
 
         /* পপ-আপ মডাল */
-        .modal { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; 
-        }
-        .modal-content { 
-            background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 380px; 
-            border: 1px solid var(--primary-teal); position: relative;
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 380px; border: 1px solid var(--primary-teal); position: relative; }
         .close-btn { position: absolute; top: 12px; right: 18px; font-size: 22px; cursor: pointer; color: #aaa; }
         .modal h2 { margin-bottom: 15px; color: var(--primary-teal); text-align: center; font-size: 18px; }
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; margin-bottom: 4px; font-size: 13px; color: #ccc; }
         .form-group input { width: 100%; padding: 10px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 14px; }
-        .form-group input:focus { border-color: var(--primary-teal); outline: none; }
         .submit-btn { width: 100%; padding: 12px; background: linear-gradient(180deg, #ffe600, #cc9900); border: none; color: #000; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 8px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-area">
+        <div class="logo-area" onclick="changeTab('home')">
             <img class="logo-img" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="Logo">
             <div class="logo-text">CTH999.COM</div>
         </div>
-        <div class="auth-btns">
+        <div class="auth-btns" id="headerAuthBox">
             <button class="login-btn" onclick="openModal('loginModal')">Login</button>
             <button class="reg-btn" onclick="openModal('regModal')">Register</button>
         </div>
+        <div class="user-badge" id="headerUserBadge">t3045834973</div>
     </header>
 
-    <div class="hero-banner">
-        <div class="banner-box"></div>
+    <div id="homeView" class="page-view active">
+        <div class="banner-box">CTH999 WELCOME BONUS 100%</div>
+        <div class="jackpot-container">
+            <div class="jackpot-title">🎰 Mega Jackpot 🎰</div>
+            <div class="jackpot-counter" id="jackpotBox">$102,678,159.00</div>
+        </div>
+        <div id="gameSectionsContainer"></div>
     </div>
 
-    <div class="jackpot-container">
-        <div class="jackpot-title">🎰 Mega Jackpot 🎰</div>
-        <div class="jackpot-counter" id="jackpotBox">$102,678,159.00</div>
+    <div id="promotionView" class="page-view">
+        <div class="promo-card">
+            <div class="promo-banner-placeholder" style="background: linear-gradient(45deg, #112c33, #04191f);">TAKAA ALLIANCE THE CHAPTER OF POWER</div>
+            <div class="promo-footer"><span class="promo-title">TAKAA ALLIANCE</span><button class="view-btn">view</button></div>
+        </div>
+        <div class="promo-card">
+            <div class="promo-banner-placeholder" style="background: linear-gradient(45deg, #4a0e2e, #1a0210);">SURPRISE BONUS - SPIN 50,000 TK</div>
+            <div class="promo-footer"><span class="promo-title">Spin for Your Dream Reward!</span><button class="view-btn">view</button></div>
+        </div>
+        <div class="promo-card">
+            <div class="promo-banner-placeholder" style="background: linear-gradient(45deg, #071f42, #020b17);">INVITE 1 PERSON & EARN 1000 TK</div>
+            <div class="promo-footer"><span class="promo-title">Invite 1 Person and Earn 1000</span><button class="view-btn">view</button></div>
+        </div>
     </div>
 
-    <main class="main-container" id="dynamicSections">
-        </main>
+    <div id="inviteView" class="page-view">
+        <div class="grid-stats">
+            <div class="stat-box stat-blue"><div class="stat-label">Today's Income</div>--</div>
+            <div class="stat-box stat-purple"><div class="stat-label">Yesterday's Income</div>--</div>
+            <div class="stat-box stat-purple"><div class="stat-label">Registers</div>--</div>
+            <div class="stat-box stat-blue"><div class="stat-label">Valid Referral</div>--</div>
+        </div>
+        <div class="invite-box">
+            <div style="font-weight:bold; font-size:14px; margin-bottom:5px;">Share with your friends</div>
+            <input type="text" value="http://www.cth-999.vip/?r=t304583" readonly>
+        </div>
+    </div>
+
+    <div id="rewardView" class="page-view">
+        <div class="reward-grid">
+            <div class="reward-box rew-1"><div class="reward-icon">🎁</div>Bonus</div>
+            <div class="reward-box rew-2"><div class="reward-icon">📅</div>Sign In</div>
+            <div class="reward-box rew-3"><div class="reward-icon">💰</div>Rescue Fund</div>
+            <div class="reward-box rew-4"><div class="reward-icon">👥</div>Invite Friends</div>
+        </div>
+    </div>
+
+    <div id="memberView" class="page-view">
+        <div class="member-bg">
+            <div class="profile-card">
+                <div class="avatar">👩</div>
+                <div class="profile-info">
+                    <h3 id="panelUser">t3045834973</h3>
+                    <p>Joined: 2026-05-29</p>
+                    <div class="balance-display">৳ <span id="panelBalance">10.37</span></div>
+                </div>
+            </div>
+            <div class="member-grid-menu" id="memberMenuGrid"></div>
+        </div>
+    </div>
 
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="changeTab('home')">
-            <div class="nav-icon">🏠</div>
-            <div>Home</div>
+        <div class="nav-item active" onclick="changeTab('home', this)">
+            <div class="nav-icon">🏠</div><div>Home</div>
         </div>
-        <div class="nav-item" onclick="alert('প্রমোশন পেজ ডেমো')">
-            <div class="nav-icon">🎁</div>
-            <div>Promotion</div>
+        <div class="nav-item" onclick="changeTab('promotion', this)">
+            <div class="nav-icon">🎁</div><div>Promotion</div>
         </div>
-        <div class="nav-item nav-item-center" onclick="alert('রেফারেল ও ইনভাইট লিংক ডেমো')">
+        <div class="nav-item nav-item-center" onclick="changeTab('invite', this)">
             <div class="nav-icon">🔗</div>
         </div>
-        <div class="nav-item" onclick="alert('ডেইলি রিওয়ার্ডস ডেমো')">
-            <div class="nav-icon">🏆</div>
-            <div>Reward</div>
+        <div class="nav-item" onclick="changeTab('reward', this)">
+            <div class="nav-icon">🏆</div><div>Reward</div>
         </div>
-        <div class="nav-item" onclick="openModal('loginModal')">
-            <div class="nav-icon">👤</div>
-            <div>Member</div>
+        <div class="nav-item" onclick="changeTab('member', this)">
+            <div class="nav-icon">👤</div><div>Member</div>
         </div>
     </div>
 
     <div id="regModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('regModal')">&times;</span>
-            <h2>Create New Account</h2>
-            <form onsubmit="handleAuth(event, 'Registration')">
-                <div class="form-group"><label>Username</label><input type="text" placeholder="Username" required></div>
-                <div class="form-group"><label>Password</label><input type="password" placeholder="Password" required></div>
-                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="01XXXXXXXXX" required></div>
+            <h2>Create Account</h2>
+            <form onsubmit="processAuth(event, 'reg')">
+                <div class="form-group"><label>Username</label><input type="text" id="regUser" value="t3045834973" required></div>
+                <div class="form-group"><label>Password</label><input type="password" required></div>
                 <button type="submit" class="submit-btn">Register</button>
             </form>
         </div>
@@ -184,9 +222,9 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
-            <h2>Account Login</h2>
-            <form onsubmit="handleAuth(event, 'Login')">
-                <div class="form-group"><label>Username / Phone</label><input type="text" required></div>
+            <h2>Login</h2>
+            <form onsubmit="processAuth(event, 'login')">
+                <div class="form-group"><label>Username</label><input type="text" id="loginUser" value="t3045834973" required></div>
                 <div class="form-group"><label>Password</label><input type="password" required></div>
                 <button type="submit" class="submit-btn">Login</button>
             </form>
@@ -194,54 +232,89 @@
     </div>
 
     <script>
-        !function(){if(!CSS.supports("height","1dvh")){var e=.01*window.innerHeight,t=document.documentElement,n=e+"px";t.style.getPropertyValue("--vh")!==n&&t.style.setProperty("--vh",n)}}();
+        let isLoggedIn = false;
+        let activeUsername = "Guest";
 
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        function handleAuth(event, type) {
-            event.preventDefault();
-            alert(type + ' successful! (Educational Demo Mode)');
-            closeModal('regModal'); closeModal('loginModal');
+
+        // ট্যাব সুইচিং লজিক
+        function changeTab(target, element) {
+            document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            
+            document.getElementById(target + 'View').classList.add('active');
+            if(element) element.classList.add('active');
         }
 
-        // জ্যাকপট নাম্বার ডাইনামিকালি চেঞ্জ হওয়ার ডেমো ইফেক্ট
+        // লগইন ও নিবন্ধন প্রসেস সিমিউলেশন
+        function processAuth(event, mode) {
+            event.preventDefault();
+            isLoggedIn = true;
+            activeUsername = mode === 'reg' ? document.getElementById('regUser').value : document.getElementById('loginUser').value;
+            
+            document.getElementById('headerAuthBox').style.display = 'none';
+            document.getElementById('headerUserBadge').style.display = 'block';
+            document.getElementById('headerUserBadge').innerText = activeUsername;
+            
+            document.getElementById('panelUser').innerText = activeUsername;
+            
+            closeModal('regModal');
+            closeModal('loginModal');
+            changeTab('member');
+            
+            // নিচের মেনুতে Member বাটন হাইলাইট করা
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.nav-item')[4].classList.add('active');
+        }
+
+        // জ্যাকপট স্ক্রিপ্ট
         setInterval(() => {
             let num = Math.floor(100000000 + Math.random() * 90000000);
             document.getElementById('jackpotBox').innerText = "$" + num.toLocaleString() + ".99";
-        }, 3000);
+        }, 2500);
 
-        // API থেকে স্ট্রাকচার্ড ডাটা লোড করা
+        // এপিআই থেকে ডেটা রেন্ডারিং
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
                 .then(data => {
-                    const mainContainer = document.getElementById('dynamicSections');
-                    let finalHTML = '';
-
-                    // প্রতিটি ক্যাটাগরি লুপ করে সেকশন তৈরি করা (Hot, Sports, Live, Fish etc)
+                    // ১. গেম জেনারেট করা
+                    const sectContainer = document.getElementById('gameSectionsContainer');
+                    let sectionsHTML = '';
                     data.categories.forEach(cat => {
-                        let gameCardsHTML = '';
+                        let gridHTML = '';
                         cat.list.forEach(game => {
-                            gameCardsHTML += `
-                                <div class="game-card" onclick="alert('${game.name} গেমটি চালু হচ্ছে...')">
+                            gridHTML += `
+                                <div class="game-card" onclick="alert('${game.name} ডেমো মোডে চালু হচ্ছে...')">
                                     <img class="game-img" src="${game.image}" alt="${game.name}">
                                     <div class="game-info">${game.name}</div>
                                 </div>
                             `;
                         });
-
-                        finalHTML += `
+                        sectionsHTML += `
                             <div class="section-header">
                                 <div class="section-title">${cat.title}</div>
-                                <div class="see-all">See All (${cat.list.length})</div>
+                                <div class="see-all">See All</div>
                             </div>
-                            <div class="game-grid">${gameCardsHTML}</div>
+                            <div class="game-grid">${gridHTML}</div>
                         `;
                     });
+                    sectContainer.innerHTML = sectionsHTML;
 
-                    mainContainer.innerHTML = finalHTML;
-                })
-                .catch(err => console.error("ডাটা রেন্ডারিং এরর:", err));
+                    // ২. ড্যাশবোর্ড মেনু আইকন রেন্ডার করা (7131.jpg লুকে)
+                    const menuContainer = document.getElementById('memberMenuGrid');
+                    let menuHTML = '';
+                    data.memberMenu.forEach(item => {
+                        menuHTML += `
+                            <div class="menu-icon-box" onclick="alert('${item.name} সেকশন ওপেন হচ্ছে...')">
+                                <div class="menu-circle">${item.icon}</div>
+                                <div class="menu-title">${item.name}</div>
+                            </div>
+                        `;
+                    });
+                    menuContainer.innerHTML = menuHTML;
+                });
         });
     </script>
 </body>
