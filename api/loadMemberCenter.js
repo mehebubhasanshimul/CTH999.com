@@ -1,40 +1,41 @@
 export default function handler(req, res) {
+    // সিপ্যানেল বা এপিআই সিকিউরিটি হেডার সেট করা
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Content-Type', 'application/json');
 
-    // স্ক্রিনশটের ক্যাটাগরি ডাটা আর্কিটেকচার
+    // স্ক্রিনশটের ক্যাটাগরি অনুযায়ী আসল গেমিং ইমেজের ডাইরেক্ট লিংক যুক্ত ডাটাবেজ
     res.status(200).json({
         categories: [
             {
                 title: "🔥 Hot Games",
                 list: [
-                    { name: "Super Ace", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "Crazy Worm", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "FlyX Slot", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" }
+                    { name: "Super Ace (JILI)", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/slots-jili-super-ace.webp" },
+                    { name: "Crazy Worm (Pascal)", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/slots-pascal-crazy-worm.webp" },
+                    { name: "Aviator (Spribe)", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/crash-spribe-aviator.webp" }
                 ]
             },
             {
                 title: "⚽ Sports Betting",
                 list: [
-                    { name: "9Wickets Sports", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "Lucky Sports", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "BTI Sports", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" }
+                    { name: "9Wickets Sports", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/sports-9wickets.webp" },
+                    { name: "Lucky Sports", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/sports-lucky.webp" },
+                    { name: "BTI Sports", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/sports-bti.webp" }
                 ]
             },
             {
                 title: "🃏 Live Casino",
                 list: [
-                    { name: "Evolution Gaming", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "Pragmatic Play", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "Micro Gaming", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" }
+                    { name: "Evolution Gaming", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/casino-evolution.webp" },
+                    { name: "Pragmatic Play", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/casino-pragmatic.webp" },
+                    { name: "Micro Gaming", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/casino-microgaming.webp" }
                 ]
             },
             {
                 title: "🐠 Fishing & Fish",
                 list: [
-                    { name: "Happy Fishing", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "Fortune King", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" },
-                    { name: "Mega Fishing", image: "https://i.ibb.co.com/TB0dCbY3/file-00000000b038720794f86c010a439e4c.png" }
+                    { name: "Happy Fishing (JILI)", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/fish-jili-happy-fishing.webp" },
+                    { name: "Fortune King (JILI)", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/fish-jili-fortune-king.webp" },
+                    { name: "Mega Fishing (JILI)", image: "https://pub-c563e46c986c4e16bb4b967963bc58b2.r2.dev/v8/fish-jili-mega-fishing.webp" }
                 ]
             }
         ]
