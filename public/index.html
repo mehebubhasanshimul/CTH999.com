@@ -2,12 +2,14 @@
 <html lang="BN" content="notranslate">
 <head>
     <meta charset="utf-8"/>
-    <meta name="google" content="notranslate"/>
-    <meta name="theme-color" content="#062229"/>
-    <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
     
     <title>CTH999.COM</title>
     <link rel="shortcut icon" href="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png"/>
+    <link rel="apple-touch-icon" href="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png">
+    
+    <meta name="facebook-domain-verification" content="lk76cou6qb5538mft0t8ge0k6rd0tl">
     
     <style>
         :root { 
@@ -29,18 +31,27 @@
             overflow-x: hidden;
         }
 
-        /* ⏳ ১. ফুল অ্যাপ স্প্ল্যাশ স্ক্রিন লোডিং (7171.jpg লুকে) */
-        #splashScreen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #22023d 0%, #06000f 100%);
-            z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            opacity: 1; transition: opacity 0.5s ease, transform 0.5s ease;
+        /* ⏳ ডট লোডিং অ্যানিমেশন কন্টেইনার */
+        #appLoader {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--bg-dark-teal);
+            z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.4s ease;
         }
-        .splash-logo { width: 120px; height: 120px; border-radius: 50%; box-shadow: 0 0 25px rgba(255, 204, 0, 0.4); margin-bottom: 10px; }
-        .splash-brand { font-size: 32px; font-weight: 900; color: #ffcc00; text-shadow: 0 0 10px rgba(255,204,0,0.5); margin-bottom: 40px; }
-        .spinner { border: 4px solid rgba(255,255,255,0.1); width: 45px; height: 45px; border-radius: 50%; border-left-color: var(--primary-teal); animation: spin 1s linear infinite; margin-bottom: 20px; }
-        .splash-loader-text { background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 20px; font-size: 13px; color: #ccc; backdrop-filter: blur(5px); }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .box-block { display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .box-item { width: 12px; height: 12px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
+
+        @keyframes boxAnimation {
+            0%, 100% { transform: scale(1); background: rgba(255, 255, 255, 0.3); }
+            50% { transform: scale(1.5); background: var(--primary-teal); }
+        }
+        .box-ani1 { animation: boxAnimation 1s ease infinite; }
+        .box-ani2 { animation: boxAnimation 1s ease infinite 0.1s; }
+        .box-ani3 { animation: boxAnimation 1s ease infinite 0.2s; }
+        .box-ani4 { animation: boxAnimation 1s ease infinite 0.3s; }
+        .box-ani5 { animation: boxAnimation 1s ease infinite 0.4s; }
+        .box-ani6 { animation: boxAnimation 1s ease infinite 0.5s; }
+        .loader-text { margin-top: 20px; font-size: 13px; color: #8da1a5; }
 
         /* হেডার */
         header {
@@ -58,55 +69,103 @@
         
         .user-profile-header { display: none; align-items: center; gap: 8px; }
         .header-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--btn-yellow); }
-        .header-balance-box { background: #09343f; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: var(--primary-teal); border: 1px solid #1c6373; }
+        .header-balance-box { background: #09343f; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: var(--primary-teal); border: 1px solid #1c6373; display: flex; align-items: center; gap: 4px; }
 
-        /* কুইক অ্যাকশন এবং নোটিশ */
+        /* অ্যাকশন বাটন */
         .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 12px 5px 12px; }
         .action-btn { padding: 12px; border-radius: 8px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
         .dep-btn { background: linear-gradient(180deg, #d87c04, #aa5f00); }
         .wit-btn { background: linear-gradient(180deg, #0e6375, #083f4b); border: 1px solid #1c6373; }
-        .notice-bar { background: #04161a; padding: 8px 15px; font-size: 12px; color: #8da1a5; display: flex; gap: 8px; align-items: center; margin: 5px 12px; border-radius: 6px; }
 
-        /* ভিউ উইন্ডো মেকানিজম */
+        /* ভিউ কন্টেইনার */
         .page-view { display: none; width: 100%; max-width: 1200px; margin: 0 auto; padding: 12px; }
         .page-view.active { display: block; }
 
-        /* হোম ব্যানার এবং জ্যাকপক */
-        .banner-box { width: 100%; height: 160px; border-radius: 10px; background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png'); background-size: cover; background-position: center; border: 1px solid #0d4654; margin-bottom: 15px; }
+        /* ব্যানার বক্স */
+        .banner-box {
+            width: 100%; height: 160px; border-radius: 10px;
+            background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png');
+            background-size: cover; background-position: center;
+            border: 1px solid #0d4654; margin-bottom: 15px;
+        }
+
+        /* নোটিশ বার */
+        .notice-bar { background: #04161a; padding: 8px 15px; font-size: 12px; color: #8da1a5; display: flex; gap: 8px; align-items: center; margin: 5px 12px; border-radius: 6px; }
+
+        /* ফিল্টার বার */
+        .filter-scroll { display: flex; gap: 8px; margin: 15px 12px 5px 12px; overflow-x: auto; white-space: nowrap; }
+        .filter-btn { background: #09343f; border: 1px solid #1c6373; padding: 8px 16px; border-radius: 6px; color: #fff; font-size: 12px; font-weight: bold; cursor: pointer; }
+        .filter-btn.active { background: var(--primary-teal); color: #000; border-color: var(--primary-teal); }
+
+        /* জ্যাকপট */
         .jackpot-container { background: linear-gradient(180deg, #04191f, #09343f); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #1c6373; margin-bottom: 15px; }
         .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; }
         .jackpot-counter { font-size: 24px; font-weight: bold; color: #fff; font-family: monospace; }
         
-        /* ৩-কলাম গেম গ্রিড লেআউট */
+        /* গেম গ্রিড */
         .section-header { display: flex; justify-content: space-between; align-items: center; margin: 15px 0 10px 0; border-left: 3px solid var(--primary-teal); padding-left: 8px; }
         .section-title { font-size: 14px; font-weight: bold; color: var(--primary-teal); text-transform: uppercase; }
+        .see-all { font-size: 12px; color: #8da1a5; cursor: pointer; }
         .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .game-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #0d4654; display: flex; flex-direction: column; cursor: pointer; }
         .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
         .game-info { padding: 5px; text-align: center; font-size: 10px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* 📱 ২. রিয়েল ডিপোজিট গেটওয়ে প্যানেল (7172.jpg লুকে) */
-        .deposit-panel { background: #fff; color: #333; padding: 15px; border-radius: 10px; }
-        .dep-section-title { font-size: 14px; font-weight: bold; color: #111; margin: 10px 0; display: flex; align-items: center; gap: 6px; }
-        .dep-methods { display: flex; gap: 12px; margin-bottom: 15px; }
-        .dep-method-card { border: 2px solid #ddd; border-radius: 8px; padding: 10px; width: 100px; text-align: center; cursor: pointer; font-weight: bold; font-size: 12px; }
-        .dep-method-card.active { border-color: #ff007c; position: relative; }
-        .dep-method-card.active::after { content: '✓'; position: absolute; bottom: 0; right: 0; background: #ff007c; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 4px 0 0 0; }
-        .note-container { background: #fff5f5; border: 1px solid #ffcccc; border-radius: 6px; padding: 12px; font-size: 12px; color: #cc0000; line-height: 1.5; margin-bottom: 15px; }
-        .amount-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 15px; }
-        .amount-btn { background: #fff; border: 1px solid #ccc; padding: 8px 4px; border-radius: 6px; font-weight: bold; font-size: 12px; cursor: pointer; text-align: center; }
-        .amount-btn:hover { border-color: #ff007c; }
-        .amount-input-box { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; font-weight: bold; margin-bottom: 15px; }
-        .next-step-btn { width: 100%; padding: 14px; background: #ccc; border: none; border-radius: 6px; font-weight: bold; font-size: 16px; color: #666; cursor: not-allowed; }
+        /* 📊 ডিপোজিট পেজ স্টাইল (7172.jpg) */
+        .dep-label-title { font-size: 14px; font-weight: bold; color: #fff; margin: 15px 0 8px 0; border-left: 3px solid var(--btn-yellow); padding-left: 6px; }
+        .method-flex { display: flex; gap: 10px; margin-bottom: 15px; }
+        .method-card { background: #09343f; border: 1px solid #1c6373; padding: 12px; border-radius: 8px; text-align: center; width: 100px; cursor: pointer; font-weight: bold; font-size: 13px; }
+        .method-card.active { border-color: var(--primary-teal); background: #0c4352; box-shadow: 0 0 10px rgba(0,255,204,0.2); }
+        .warning-box { background: rgba(255, 51, 51, 0.1); border: 1px solid var(--danger-red); border-radius: 8px; padding: 12px; font-size: 12px; color: #ff8888; line-height: 1.5; margin-bottom: 15px; }
+        .channel-indicator { background: #04191f; padding: 12px; border-radius: 6px; border: 1px solid #1c6373; font-size: 13px; font-weight: bold; color: var(--primary-teal); margin-bottom: 15px; }
+        .amt-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 15px; }
+        .amt-btn { background: #09343f; border: 1px solid #1c6373; padding: 10px 2px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: bold; cursor: pointer; }
+        .amt-btn:hover { border-color: var(--btn-yellow); }
+        .amt-input { width: 100%; padding: 12px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 15px; font-weight: bold; margin-bottom: 20px; text-align: center; }
+        .next-btn { width: 100%; padding: 14px; background: #263a40; border: none; border-radius: 6px; color: #666; font-weight: bold; font-size: 15px; cursor: not-allowed; }
 
-        /* 📱 ৩. রিয়েল উইথড্রয়াল গেটওয়ে প্যানেল (7173.jpg লুকে) */
-        .withdraw-panel { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
-        .bank-card-mock { background: linear-gradient(135deg, #00f2fe, #4facfe); border-radius: 12px; padding: 20px; color: #fff; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(79,172,254,0.3); position: relative; }
-        .bank-card-title { font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
-        .bank-card-num { font-size: 20px; font-weight: bold; margin: 15px 0; letter-spacing: 1px; }
-        .add-card-btn { position: absolute; bottom: -10px; right: 20px; background: red; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(255,0,0,0.3); }
+        /* 🏦 উইথড্রয়াল পেজ স্টাইল (7173.jpg) */
+        .withdraw-card-view { background: linear-gradient(135deg, #00f2fe, #4facfe); padding: 20px; border-radius: 12px; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); position: relative; margin-bottom: 20px; }
+        .w-card-brand { font-size: 18px; font-weight: bold; }
+        .w-card-number { font-size: 22px; font-weight: bold; margin: 15px 0; letter-spacing: 1px; }
+        .add-account-circle { position: absolute; bottom: -10px; right: 20px; background: var(--danger-red); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; cursor: pointer; border: none; box-shadow: 0 4px 10px rgba(255,51,51,0.4); }
+        .info-row { display: flex; justify-content: space-between; font-size: 13px; color: #8da1a5; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #0d4654; }
 
-        /* 📱 ৪. প্রফেশনাল লগইন ইন্টারফেস (7174.jpg লুকে) */
+        /* প্রমোশন পেজ */
+        .promo-card { background: #09343f; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #1c6373; }
+        .promo-banner { width: 100%; height: 130px; background: linear-gradient(135deg, #09343f, #1c6373); }
+        .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+        .view-btn { background: #ffcc00; color: #000; border: none; padding: 4px 10px; font-size: 11px; font-weight: bold; border-radius: 4px; }
+
+        /* ইনভাইট পেজ */
+        .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .stat-box { padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; color: #fff; }
+        .stat-blue { background: linear-gradient(135deg, #2af598, #009efd); }
+        .stat-purple { background: linear-gradient(135deg, #b182ff, #7033ff); }
+        .stat-label { font-size: 10px; opacity: 0.8; margin-bottom: 4px; }
+        .invite-box { background: #fff; color: #000; padding: 15px; border-radius: 8px; text-align: center; }
+        .invite-box input { width: 100%; padding: 8px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; text-align: center; margin-top: 5px; font-weight: bold; color: #333; }
+
+        /* রিওয়ার্ড পেজ */
+        .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .reward-box { border-radius: 8px; padding: 18px; text-align: center; font-weight: bold; font-size: 14px; color: #fff; }
+        .rew-1 { background: linear-gradient(135deg, #00b965, #00ebd3); }
+        .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7); }
+        .rew-3 { background: linear-gradient(135deg, #f12711, #f5af19); }
+        .rew-4 { background: linear-gradient(135deg, #f857a6, #ff5858); }
+
+        /* মেম্বার প্রোফাইল */
+        .member-bg { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
+        .profile-card { background: #fff; padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 15px; }
+        .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
+        .profile-info h3 { font-size: 15px; color: #111; }
+        .profile-info p { font-size: 11px; color: #666; }
+        .balance-display { font-size: 18px; font-weight: bold; color: #e65100; margin-top: 2px; }
+        .member-grid-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
+        .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; }
+        .menu-title { font-size: 10px; font-weight: 600; color: #555; }
+
+        /* 📱 ৪. প্রফেশনাল লগইন ইন্টারফেস ভিউ (7174.jpg লুকে) */
         .login-view-container { max-width: 400px; margin: 40px auto; padding: 20px; text-align: center; }
         .login-title { font-size: 26px; font-weight: 900; color: #ffcc00; margin-bottom: 30px; letter-spacing: 1px; }
         .login-input-group { background: #04191f; border: 1px solid #1c6373; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
@@ -117,7 +176,7 @@
 
         /* বটম বার */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; cursor: pointer; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
         .nav-item.active { color: var(--primary-teal); }
         .nav-icon { font-size: 18px; margin-bottom: 2px; }
         .nav-item-center { background: linear-gradient(180deg, #00ffcc, #009977); width: 42px; height: 42px; border-radius: 50%; justify-content: center; color: #fff !important; transform: translateY(-6px); }
@@ -125,13 +184,20 @@
 </head>
 <body>
 
-    <div id="splashScreen">
-        <img class="splash-logo" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="Logo">
-        <div class="splash-brand">CTH999</div>
-        <div class="spinner"></div>
-        <div class="splash-loader-text">Trying to find the fastest line.</div>
+    <!-- ⏳ ডট লোডিং অ্যানিমেশন কন্টেইনার -->
+    <div id="appLoader">
+        <div class="box-block">
+            <div class="box-item box-ani1"></div>
+            <div class="box-item box-ani2"></div>
+            <div class="box-item box-ani3"></div>
+            <div class="box-item box-ani4"></div>
+            <div class="box-item box-ani5"></div>
+            <div class="box-item box-ani6"></div>
+        </div>
+        <div class="loader-text">Loading secure lines... Please wait</div>
     </div>
 
+    <!-- হেডার বার -->
     <header>
         <div class="logo-area" onclick="changeTab('home')">
             <img class="logo-img" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="Logo">
@@ -148,14 +214,21 @@
     </header>
 
     <div class="quick-actions">
-        <button class="action-btn dep-btn" onclick="handleProtectedNavigation('deposit')">💰 Deposit</button>
-        <button class="action-btn wit-btn" onclick="handleProtectedNavigation('withdraw')">💳 Withdraw</button>
+        <button class="action-btn dep-btn" onclick="handleNavigationWithAuth('deposit')">💰 Deposit</button>
+        <button class="action-btn wit-btn" onclick="handleNavigationWithAuth('withdraw')">💳 Withdraw</button>
     </div>
 
     <div class="notice-bar">
-        📢 <marquee scrollamount="3">Welcome to CTH999.COM! Login with Gmail to unlock megabonus options.</marquee>
+        📢 <marquee scrollamount="3">Welcome to CTH999.COM! Get 82% Lucky Draw Bonus on your first deposit up to 5,000 TK.</marquee>
     </div>
 
+    <div class="filter-scroll">
+        <button class="filter-btn active" onclick="changeTab('home')">🔥 HOT GAMES</button>
+        <button class="filter-btn" onclick="handleProtectedAction('Favorites')">⭐ FAVORITES</button>
+        <button class="filter-btn" onclick="handleProtectedAction('Slots Category')">🎰 SLOTS</button>
+    </div>
+
+    <!-- ১. হোম পেজ ভিউ -->
     <div id="homeView" class="page-view active">
         <div class="banner-box"></div>
         <div class="jackpot-container">
@@ -165,13 +238,14 @@
         <div id="gameSectionsContainer"></div>
     </div>
 
+    <!-- 📱 ৪. প্রফেশনাল লগইন ইন্টারফেস ভিউ (7174.jpg লুকে) -->
     <div id="loginPageView" class="page-view">
         <div class="login-view-container">
             <div class="login-title">CTH999.COM</div>
-            <form onsubmit="executeGmailAuth(event)">
+            <form onsubmit="executeAuth(event)">
                 <div class="login-input-group">
                     <span>📧</span>
-                    <input type="email" id="gmailField" placeholder="Gmail address" required>
+                    <input type="email" id="loginEmail" placeholder="Gmail address" required>
                 </div>
                 <div class="login-input-group">
                     <span>🔒</span>
@@ -186,62 +260,108 @@
         </div>
     </div>
 
+    <!-- 📊 ২. ডিপোজিট পেজ ভিউ (7172.jpg থিম) -->
     <div id="depositView" class="page-view">
         <div class="deposit-panel">
-            <div class="dep-section-title"><span style="color:red;">•</span> Deposit Method</div>
-            <div class="dep-methods">
-                <div class="dep-method-card active">Bkash VIP</div>
-                <div class="dep-method-card" style="opacity:0.6;">NAGAD VIP</div>
+            <div class="dep-label-title">Deposit Method</div>
+            <div class="method-flex">
+                <div class="method-card active">Bkash VIP</div>
+                <div class="method-card" onclick="alert('নগদ গেটওয়ে ডেমো মোডে রয়েছে')">Nagad VIP</div>
             </div>
-            <div class="note-container">
+            <div class="warning-box">
                 !!! NOTE : অনুগ্রহ করে আপনার ডিপোজিট করার পরে অবশ্যই আপনার Trx-ID আইডি সাবমিট করবেন। তাহলে খুব দ্রুত আপনার অ্যাকাউন্টের মধ্যে টাকা যোগ হয়ে যাবে। !!!
             </div>
-            <div class="dep-section-title"><span style="color:teal;">•</span> Payment channels</div>
-            <div style="font-size:12px; padding:10px; background:#f9f9f9; border-radius:6px; margin-bottom:15px; font-weight:bold; border:1px solid #eee; color:#ff007c;">
-                Bkash VIP CHANNEL
+            <div class="dep-label-title">Payment channels</div>
+            <div class="channel-indicator">Bkash VIP | CHANNEL</div>
+            <div class="dep-label-title">Deposit Amounts</div>
+            <div class="amt-grid">
+                <div class="amt-btn" onclick="selectDepositAmount(100)">100</div>
+                <div class="amt-btn" onclick="selectDepositAmount(500)">500</div>
+                <div class="amt-btn" onclick="selectDepositAmount(1000)">1,000</div>
+                <div class="amt-btn" onclick="selectDepositAmount(5000)">5,000</div>
+                <div class="amt-btn" onclick="selectDepositAmount(10000)">10,000</div>
             </div>
-            <div class="dep-section-title"><span style="color:purple;">•</span> Deposit Amounts</div>
-            <div class="amount-grid">
-                <div class="amount-btn" onclick="setAmount(100)">100</div>
-                <div class="amount-btn" onclick="setAmount(500)">500</div>
-                <div class="amount-btn" onclick="setAmount(1000)">1,000</div>
-                <div class="amount-btn" onclick="setAmount(5000)">5,000</div>
-                <div class="amount-btn" onclick="setAmount(10000)">10,000</div>
-            </div>
-            <input type="text" class="amount-input-box" id="depositAmountInput" value="৳ 100 - 50,000" readonly>
-            <button class="next-step-btn" id="depNextBtn">Next</button>
+            <input type="text" class="amt-input" id="depositInputBox" value="৳ 100 - 50,000" readonly>
+            <button class="next-btn" id="depositNextSubmitBtn" onclick="submitDepositAction()">Next</button>
         </div>
     </div>
 
+    <!-- 🏦 ৩. উইথড্রয়াল পেজ ভিউ (7173.jpg থিম) -->
     <div id="withdrawView" class="page-view">
         <div class="withdraw-panel">
-            <div class="bank-card-mock">
-                <div class="bank-card-title">💳 BKash</div>
-                <div class="bank-card-num">********7524</div>
-                <div>Available: ৳ 10.37</div>
-                <button class="add-card-btn">+</button>
+            <div class="withdraw-card-view">
+                <div class="w-card-brand">bKash (Bound 1/5)</div>
+                <div class="w-card-number">*******7524</div>
+                <div class="w-card-footer">Time: 2026-05-29 13:30:26</div>
+                <button class="add-account-circle" onclick="alert('নতুন অ্যাকাউন্ট যোগ করার ফর্ম')">+</button>
             </div>
-            <div style="font-size:12px; color:#666; line-height:1.8;">
-                <p>Withdrawal time: 24 hours</p>
-                <p style="color:red; font-weight:bold; margin-top:10px;">Please complete the required turnover for withdrawal.</p>
-            </div>
+            <div class="info-row"><span>Withdrawal time</span><span>24 hours</span></div>
+            <div class="info-row"><span>Main Wallet</span><span style="color:var(--primary-teal)">৳ 10.37</span></div>
+            <div class="info-row"><span>Available Amount</span><span style="color:var(--primary-teal)">৳ 10.37</span></div>
+            <p style="color:var(--danger-red); font-size:12px; font-weight:bold; margin: 15px 0 5px 0; text-align:center;">Please complete the required turnover for withdrawal.</p>
+            <div class="info-row"><span>General Turnover Need</span><span style="color:red">0.02</span></div>
+            <div class="info-row"><span>Slot Turnover Need</span><span style="color:red">0.15</span></div>
+            <button class="submit-btn" style="background:var(--danger-red); color:#fff; font-size:15px; margin-top:15px;" onclick="changeTab('home')">OK</button>
         </div>
     </div>
 
+    <!-- ৪. প্রমোশন পেজ ভিউ -->
+    <div id="promotionView" class="page-view">
+        <div class="promo-card">
+            <div class="promo-banner" style="background: linear-gradient(135deg, #0d3842, #174f5e);"></div>
+            <div class="promo-footer"><span>TAKAA ALLIANCE</span><button class="view-btn">view</button></div>
+        </div>
+    </div>
+
+    <!-- ৫. ইনভাইট পেজ ভিউ -->
+    <div id="inviteView" class="page-view">
+        <div class="grid-stats">
+            <div class="stat-box stat-blue"><div class="stat-label">Today's Income</div>--</div>
+            <div class="stat-box stat-purple"><div class="stat-label">Yesterday's Income</div>--</div>
+        </div>
+        <div class="invite-box">
+            <input type="text" id="referralLinkField" value="http://www.cth-999.vip/?r=user" readonly>
+        </div>
+    </div>
+
+    <!-- ৬. রিওয়ার্ড পেজ ভিউ -->
+    <div id="rewardView" class="page-view">
+        <div class="reward-grid">
+            <div class="reward-box rew-1">Bonus</div>
+            <div class="reward-box rew-2">Sign In</div>
+        </div>
+    </div>
+
+    <!-- ৭. মেম্বার প্রোফাইল ভিউ -->
+    <div id="memberView" class="page-view">
+        <div class="member-bg">
+            <div class="profile-card">
+                <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" alt="User">
+                <div class="profile-info">
+                    <h3 id="panelUser">User</h3>
+                    <p>Joined: 2026-06-14</p>
+                    <div class="balance-display">৳ <span id="panelBalance">10.37</span></div>
+                </div>
+            </div>
+            <div class="member-grid-menu" id="memberMenuGrid"></div>
+        </div>
+    </div>
+
+    <!-- বটম নেভিগেশন বার -->
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="changeTab('home')">
+        <div class="nav-item active" onclick="changeTab('home', this)">
             <div class="nav-icon">🏠</div><div>Home</div>
         </div>
-        <div class="nav-item" onclick="handleProtectedNavigation('home')">
+        <div class="nav-item" onclick="handleNavigationWithAuth('promotion', this)">
             <div class="nav-icon">🎁</div><div>Promotion</div>
         </div>
-        <div class="nav-item nav-item-center" onclick="handleProtectedNavigation('home')">
+        <div class="nav-item nav-item-center" onclick="handleNavigationWithAuth('invite', this)">
             <div class="nav-icon">🔗</div>
         </div>
-        <div class="nav-item" onclick="handleProtectedNavigation('home')">
+        <div class="nav-item" onclick="handleNavigationWithAuth('reward', this)">
             <div class="nav-icon">🏆</div><div>Reward</div>
         </div>
-        <div class="nav-item" onclick="handleProtectedNavigation('home')">
+        <div class="nav-item" onclick="handleNavigationWithAuth('member', this)">
             <div class="nav-icon">👤</div><div>Member</div>
         </div>
     </div>
@@ -249,76 +369,92 @@
     <script>
         let sessionActive = false;
 
-        // স্প্ল্যাশ স্ক্রিন ফিক্সড অ্যানিমেশন স্ক্রিপ্ট (7171.jpg)
+        // ডট লোডার হাইড ইঞ্জিন
         window.addEventListener('load', () => {
             setTimeout(() => {
-                const splash = document.getElementById('splashScreen');
-                if (splash) {
-                    splash.style.opacity = '0';
-                    splash.style.transform = 'translateY(-100%)';
-                    setTimeout(() => splash.style.display = 'none', 500);
+                const loader = document.getElementById('appLoader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.style.display = 'none', 400);
                 }
-            }, 2500);
+            }, 1500);
         });
 
-        function changeTab(target) {
+        function changeTab(target, element) {
             document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
-            const targetView = document.getElementById(target + 'View');
-            if (targetView) targetView.classList.add('active');
-            
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            if(target === 'home') document.querySelectorAll('.nav-item')[0].classList.add('active');
-        }
-
-        // ক্লিয়ার হোম পেজ প্রোটেকশন
-        function handleProtectedNavigation(target) {
-            if (!sessionActive) {
-                changeTab('loginPage');
+            
+            const targetView = document.getElementById(target + 'View');
+            if(targetView) targetView.classList.add('active');
+            
+            if(element) {
+                element.classList.add('active');
             } else {
-                changeTab(target);
+                if(target === 'home') document.querySelectorAll('.nav-item')[0].classList.add('active');
             }
         }
 
-        // জিমেইল অথেন্টিকেশন ইঞ্জিন (7174.jpg)
-        function executeGmailAuth(event) {
+        function handleNavigationWithAuth(target, element) {
+            if (!sessionActive) { changeTab('loginPage'); } else { changeTab(target, element); }
+        }
+
+        function handleProtectedAction(actionName) {
+            if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
+        }
+
+        // ডিপোজিট ক্যালকুলেশন
+        function selectDepositAmount(amount) {
+            document.getElementById('depositInputBox').value = "৳ " + amount;
+            const nextBtn = document.getElementById('depositNextSubmitBtn');
+            nextBtn.style.background = 'linear-gradient(180deg, #ffe600, #cc9900)';
+            nextBtn.style.color = '#000';
+            nextBtn.style.cursor = 'pointer';
+        }
+
+        function submitDepositAction() {
+            const currentVal = document.getElementById('depositInputBox').value;
+            if(currentVal.includes('0') && !currentVal.includes('-')) {
+                alert(currentVal + ' deposit simulated successfully.');
+                changeTab('home');
+            }
+        }
+
+        // 📧 জিমেইল অথেন্টিকেশন ইঞ্জিন
+        function executeAuth(event) {
             event.preventDefault();
             sessionActive = true;
             
+            let emailInput = document.getElementById('loginEmail').value || "user@gmail.com";
+            let extractedUser = emailInput.split('@')[0];
+            
             document.getElementById('headerAuthBox').style.display = 'none';
             document.getElementById('headerUserPanel').style.display = 'flex';
+            document.getElementById('panelUser').innerText = extractedUser;
+            document.getElementById('referralLinkField').value = "http://www.cth-999.vip/?r=" + extractedUser;
             
             changeTab('home');
-            alert('লগইন সফল হয়েছে! সমস্ত গেটওয়ে এবং চ্যানাল আনলকড।');
         }
 
-        function setAmount(val) {
-            document.getElementById('depositAmountInput').value = "৳ " + val;
-            let btn = document.getElementById('depNextBtn');
-            btn.style.background = 'linear-gradient(180deg, #ffe600, #cc9900)';
-            btn.style.color = '#000';
-            btn.style.cursor = 'pointer';
-        }
-
-        // লাইভ জ্যাকারপট সিমিউলেশন
         setInterval(() => {
-            let num = 123590076 + Math.floor(Math.random() * 8000);
-            document.getElementById('jackpotBox').innerText = num.toLocaleString() + ".19";
-        }, 2500);
+            let num = 123590076 + Math.floor(Math.random() * 5000);
+            let decimals = Math.floor(Math.random() * 99);
+            document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
+        }, 3000);
 
-        // গেমিং ডাটা রেন্ডারিং
+        // 🕹️ ডাটা রেন্ডারিং মেকানিজম এবং ডেমো গেম উইন্ডো প্লেয়ার লজিক
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
                 .then(data => {
                     const container = document.getElementById('gameSectionsContainer');
-                    if (!container) return;
                     let finalHTML = '';
 
                     data.categories.forEach(cat => {
                         let gridHTML = '';
                         cat.list.forEach(game => {
+                            // গেম কার্ডে ক্লিক করলে লগইন প্রোটেকশন চেক করবে এবং রিয়েল ডেমো লিংক নতুন উইন্ডোতে ওপেন করবে
                             gridHTML += `
-                                <div class="game-card" onclick="handleProtectedNavigation('home')">
+                                <div class="game-card" onclick="if(!sessionActive){ changeTab('loginPage'); } else { window.open('${game.gameUrl}', '_blank'); }">
                                     <img class="game-img" src="${game.image}" alt="${game.name}">
                                     <div class="game-info">${game.name}</div>
                                 </div>
@@ -333,7 +469,20 @@
                         `;
                     });
                     container.innerHTML = finalHTML;
-                });
+
+                    const menuContainer = document.getElementById('memberMenuGrid');
+                    let menuHTML = '';
+                    data.memberMenu.forEach(item => {
+                        menuHTML += `
+                            <div class="menu-icon-box" onclick="alert('${item.name} opened.')">
+                                <div class="menu-circle">${item.icon}</div>
+                                <div class="menu-title">${item.name}</div>
+                            </div>
+                        `;
+                    });
+                    menuContainer.innerHTML = menuHTML;
+                })
+                .catch(err => console.error("Error connecting to /api/loadMemberCenter. Make sure back-end function is live.", err));
         });
     </script>
 </body>
