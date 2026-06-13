@@ -16,6 +16,7 @@
             --bg-dark-teal: #062229; 
             --card-bg: #09343f;
             --btn-yellow: #ffcc00;
+            --danger-red: #ff3333;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         
@@ -27,6 +28,19 @@
             padding-bottom: 75px;
             overflow-x: hidden;
         }
+
+        /* ⏳ ১. ফুল অ্যাপ স্প্ল্যাশ স্ক্রিন লোডিং (7171.jpg লুকে) */
+        #splashScreen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #22023d 0%, #06000f 100%);
+            z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 1; transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .splash-logo { width: 120px; height: 120px; border-radius: 50%; box-shadow: 0 0 25px rgba(255, 204, 0, 0.4); margin-bottom: 10px; }
+        .splash-brand { font-size: 32px; font-weight: 900; color: #ffcc00; text-shadow: 0 0 10px rgba(255,204,0,0.5); margin-bottom: 40px; }
+        .spinner { border: 4px solid rgba(255,255,255,0.1); width: 45px; height: 45px; border-radius: 50%; border-left-color: var(--primary-teal); animation: spin 1s linear infinite; margin-bottom: 20px; }
+        .splash-loader-text { background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 20px; font-size: 13px; color: #ccc; backdrop-filter: blur(5px); }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         /* হেডার */
         header {
@@ -44,101 +58,79 @@
         
         .user-profile-header { display: none; align-items: center; gap: 8px; }
         .header-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--btn-yellow); }
-        .header-balance-box { background: #09343f; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: var(--primary-teal); border: 1px solid #1c6373; display: flex; align-items: center; gap: 4px; }
+        .header-balance-box { background: #09343f; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: var(--primary-teal); border: 1px solid #1c6373; }
 
-        /* অ্যাকশন বাটন */
+        /* কুইক অ্যাকশন এবং নোটিশ */
         .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 12px 5px 12px; }
         .action-btn { padding: 12px; border-radius: 8px; border: none; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; color: #fff; }
         .dep-btn { background: linear-gradient(180deg, #d87c04, #aa5f00); }
         .wit-btn { background: linear-gradient(180deg, #0e6375, #083f4b); border: 1px solid #1c6373; }
+        .notice-bar { background: #04161a; padding: 8px 15px; font-size: 12px; color: #8da1a5; display: flex; gap: 8px; align-items: center; margin: 5px 12px; border-radius: 6px; }
 
-        /* ভিউ কন্টেইনার */
+        /* ভিউ উইন্ডো মেকানিজম */
         .page-view { display: none; width: 100%; max-width: 1200px; margin: 0 auto; padding: 12px; }
         .page-view.active { display: block; }
 
-        /* আপনার দেওয়া মূল বড় ব্যানার ব্যাকগ্রাউন্ড হিসেবে যুক্ত */
-        .banner-box {
-            width: 100%; height: 160px; border-radius: 10px;
-            background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png');
-            background-size: cover; background-position: center;
-            border: 1px solid #0d4654; margin-bottom: 15px;
-        }
-
-        /* নোটিশ বার */
-        .notice-bar { background: #04161a; padding: 8px 15px; font-size: 12px; color: #8da1a5; display: flex; gap: 8px; align-items: center; margin: 5px 12px; border-radius: 6px; }
-
-        /* ফিল্টার বার */
-        .filter-scroll { display: flex; gap: 8px; margin: 15px 12px 5px 12px; overflow-x: auto; white-space: nowrap; }
-        .filter-btn { background: #09343f; border: 1px solid #1c6373; padding: 8px 16px; border-radius: 6px; color: #fff; font-size: 12px; font-weight: bold; cursor: pointer; }
-        .filter-btn.active { background: var(--primary-teal); color: #000; border-color: var(--primary-teal); }
-
-        /* জ্যাকপট */
+        /* হোম ব্যানার এবং জ্যাকপক */
+        .banner-box { width: 100%; height: 160px; border-radius: 10px; background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png'); background-size: cover; background-position: center; border: 1px solid #0d4654; margin-bottom: 15px; }
         .jackpot-container { background: linear-gradient(180deg, #04191f, #09343f); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #1c6373; margin-bottom: 15px; }
         .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; }
         .jackpot-counter { font-size: 24px; font-weight: bold; color: #fff; font-family: monospace; }
         
-        /* গেম গ্রিড */
+        /* ৩-কলাম গেম গ্রিড লেআউট */
         .section-header { display: flex; justify-content: space-between; align-items: center; margin: 15px 0 10px 0; border-left: 3px solid var(--primary-teal); padding-left: 8px; }
         .section-title { font-size: 14px; font-weight: bold; color: var(--primary-teal); text-transform: uppercase; }
-        .see-all { font-size: 12px; color: #8da1a5; cursor: pointer; }
         .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .game-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #0d4654; display: flex; flex-direction: column; cursor: pointer; }
         .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
         .game-info { padding: 5px; text-align: center; font-size: 10px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* প্রমোশন পেজ */
-        .promo-card { background: #09343f; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #1c6373; }
-        .promo-banner { width: 100%; height: 130px; background: linear-gradient(135deg, #09343f, #1c6373); }
-        .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-        .view-btn { background: #ffcc00; color: #000; border: none; padding: 4px 10px; font-size: 11px; font-weight: bold; border-radius: 4px; }
+        /* 📱 ২. রিয়েল ডিপোজিট গেটওয়ে প্যানেল (7172.jpg লুকে) */
+        .deposit-panel { background: #fff; color: #333; padding: 15px; border-radius: 10px; }
+        .dep-section-title { font-size: 14px; font-weight: bold; color: #111; margin: 10px 0; display: flex; align-items: center; gap: 6px; }
+        .dep-methods { display: flex; gap: 12px; margin-bottom: 15px; }
+        .dep-method-card { border: 2px solid #ddd; border-radius: 8px; padding: 10px; width: 100px; text-align: center; cursor: pointer; font-weight: bold; font-size: 12px; }
+        .dep-method-card.active { border-color: #ff007c; position: relative; }
+        .dep-method-card.active::after { content: '✓'; position: absolute; bottom: 0; right: 0; background: #ff007c; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 4px 0 0 0; }
+        .note-container { background: #fff5f5; border: 1px solid #ffcccc; border-radius: 6px; padding: 12px; font-size: 12px; color: #cc0000; line-height: 1.5; margin-bottom: 15px; }
+        .amount-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 15px; }
+        .amount-btn { background: #fff; border: 1px solid #ccc; padding: 8px 4px; border-radius: 6px; font-weight: bold; font-size: 12px; cursor: pointer; text-align: center; }
+        .amount-btn:hover { border-color: #ff007c; }
+        .amount-input-box { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; font-weight: bold; margin-bottom: 15px; }
+        .next-step-btn { width: 100%; padding: 14px; background: #ccc; border: none; border-radius: 6px; font-weight: bold; font-size: 16px; color: #666; cursor: not-allowed; }
 
-        /* ইনভাইট পেজ */
-        .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .stat-box { padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; color: #fff; }
-        .stat-blue { background: linear-gradient(135deg, #2af598, #009efd); }
-        .stat-purple { background: linear-gradient(135deg, #b182ff, #7033ff); }
-        .stat-label { font-size: 10px; opacity: 0.8; margin-bottom: 4px; }
-        .invite-box { background: #fff; color: #000; padding: 15px; border-radius: 8px; text-align: center; }
-        .invite-box input { width: 100%; padding: 8px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; text-align: center; margin-top: 5px; font-weight: bold; color: #333; }
+        /* 📱 ৩. রিয়েল উইথড্রয়াল গেটওয়ে প্যানেল (7173.jpg লুকে) */
+        .withdraw-panel { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
+        .bank-card-mock { background: linear-gradient(135deg, #00f2fe, #4facfe); border-radius: 12px; padding: 20px; color: #fff; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(79,172,254,0.3); position: relative; }
+        .bank-card-title { font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .bank-card-num { font-size: 20px; font-weight: bold; margin: 15px 0; letter-spacing: 1px; }
+        .add-card-btn { position: absolute; bottom: -10px; right: 20px; background: red; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 24px; font-weight: bold; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(255,0,0,0.3); }
 
-        /* রিওয়ার্ড পেজ */
-        .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .reward-box { border-radius: 8px; padding: 18px; text-align: center; font-weight: bold; font-size: 14px; color: #fff; }
-        .rew-1 { background: linear-gradient(135deg, #00b965, #00ebd3); }
-        .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7); }
-        .rew-3 { background: linear-gradient(135deg, #f12711, #f5af19); }
-        .rew-4 { background: linear-gradient(135deg, #f857a6, #ff5858); }
-
-        /* মেম্বার প্রোফাইল */
-        .member-bg { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
-        .profile-card { background: #fff; padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 15px; }
-        .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-        .profile-info h3 { font-size: 15px; color: #111; }
-        .profile-info p { font-size: 11px; color: #666; }
-        .balance-display { font-size: 18px; font-weight: bold; color: #e65100; margin-top: 2px; }
-        .member-grid-menu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; text-align: center; }
-        .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; }
-        .menu-title { font-size: 10px; font-weight: 600; color: #555; }
+        /* 📱 ৪. প্রফেশনাল লগইন ইন্টারফেস (7174.jpg লুকে) */
+        .login-view-container { max-width: 400px; margin: 40px auto; padding: 20px; text-align: center; }
+        .login-title { font-size: 26px; font-weight: 900; color: #ffcc00; margin-bottom: 30px; letter-spacing: 1px; }
+        .login-input-group { background: #04191f; border: 1px solid #1c6373; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .login-input-group input { background: transparent; border: none; width: 100%; color: #fff; font-size: 15px; font-weight: 600; }
+        .login-input-group input:focus { outline: none; }
+        .login-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #8da1a5; margin: 15px 0 25px 0; }
+        .yellow-submit-btn { width: 100%; padding: 14px; background: #ffcc00; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; color: #000; cursor: pointer; box-shadow: 0 4px 15px rgba(255,204,0,0.3); }
 
         /* বটম বার */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; cursor: pointer; }
         .nav-item.active { color: var(--primary-teal); }
         .nav-icon { font-size: 18px; margin-bottom: 2px; }
         .nav-item-center { background: linear-gradient(180deg, #00ffcc, #009977); width: 42px; height: 42px; border-radius: 50%; justify-content: center; color: #fff !important; transform: translateY(-6px); }
-
-        /* মডাল */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 360px; border: 1px solid var(--primary-teal); position: relative; }
-        .close-btn { position: absolute; top: 12px; right: 18px; font-size: 22px; cursor: pointer; color: #aaa; }
-        .modal h2 { margin-bottom: 15px; color: var(--primary-teal); text-align: center; font-size: 18px; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; margin-bottom: 4px; font-size: 13px; color: #ccc; }
-        .form-group input { width: 100%; padding: 10px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 14px; }
-        .submit-btn { width: 100%; padding: 12px; background: linear-gradient(180deg, #ffe600, #cc9900); border: none; color: #000; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 8px; }
     </style>
 </head>
 <body>
+
+    <div id="splashScreen">
+        <img class="splash-logo" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="Logo">
+        <div class="splash-brand">CTH999</div>
+        <div class="spinner"></div>
+        <div class="splash-loader-text">Trying to find the fastest line.</div>
+    </div>
 
     <header>
         <div class="logo-area" onclick="changeTab('home')">
@@ -146,8 +138,8 @@
             <div class="logo-text">CTH999.COM</div>
         </div>
         <div class="auth-btns" id="headerAuthBox">
-            <button class="login-btn" onclick="openModal('loginModal')">Login</button>
-            <button class="reg-btn" onclick="openModal('regModal')">Register</button>
+            <button class="login-btn" onclick="changeTab('loginPage')">Login</button>
+            <button class="reg-btn" onclick="changeTab('loginPage')">Register</button>
         </div>
         <div class="user-profile-header" id="headerUserPanel">
             <div class="header-balance-box">৳ <span id="headerBalance">10.37</span> 🔄</div>
@@ -156,18 +148,12 @@
     </header>
 
     <div class="quick-actions">
-        <button class="action-btn dep-btn" onclick="handleProtectedAction('Deposit')">💰 Deposit</button>
-        <button class="action-btn wit-btn" onclick="handleProtectedAction('Withdraw')">💳 Withdraw</button>
+        <button class="action-btn dep-btn" onclick="handleProtectedNavigation('deposit')">💰 Deposit</button>
+        <button class="action-btn wit-btn" onclick="handleProtectedNavigation('withdraw')">💳 Withdraw</button>
     </div>
 
     <div class="notice-bar">
-        📢 <marquee scrollamount="3">Welcome to CTH999.COM! Get 82% Lucky Draw Bonus on your first deposit up to 5,000 TK.</marquee>
-    </div>
-
-    <div class="filter-scroll">
-        <button class="filter-btn active" onclick="changeTab('home')">🔥 HOT GAMES</button>
-        <button class="filter-btn" onclick="handleProtectedAction('Favorites')">⭐ FAVORITES</button>
-        <button class="filter-btn" onclick="handleProtectedAction('Slots Category')">🎰 SLOTS</button>
+        📢 <marquee scrollamount="3">Welcome to CTH999.COM! Login with Gmail to unlock megabonus options.</marquee>
     </div>
 
     <div id="homeView" class="page-view active">
@@ -179,156 +165,160 @@
         <div id="gameSectionsContainer"></div>
     </div>
 
-    <div id="promotionView" class="page-view">
-        <div class="promo-card">
-            <div class="promo-banner" style="background: linear-gradient(135deg, #0d3842, #174f5e);"></div>
-            <div class="promo-footer"><span>TAKAA ALLIANCE</span><button class="view-btn">view</button></div>
-        </div>
-        <div class="promo-card">
-            <div class="promo-banner" style="background: linear-gradient(135deg, #440a2c, #70124b);"></div>
-            <div class="promo-footer"><span>Spin for Your Dream Reward!</span><button class="view-btn">view</button></div>
-        </div>
-    </div>
-
-    <div id="inviteView" class="page-view">
-        <div class="grid-stats">
-            <div class="stat-box stat-blue"><div class="stat-label">Today's Income</div>--</div>
-            <div class="stat-box stat-purple"><div class="stat-label">Yesterday's Income</div>--</div>
-            <div class="stat-box stat-purple"><div class="stat-label">Registers</div>--</div>
-            <div class="stat-box stat-blue"><div class="stat-label">Valid Referral</div>--</div>
-        </div>
-        <div class="invite-box">
-            <div style="font-weight:bold; font-size:13px; margin-bottom:5px;">Share link with your friends</div>
-            <input type="text" id="referralLinkField" value="http://www.cth-999.vip/?r=user" readonly>
-        </div>
-    </div>
-
-    <div id="rewardView" class="page-view">
-        <div class="reward-grid">
-            <div class="reward-box rew-1">Bonus</div>
-            <div class="reward-box rew-2">Sign In</div>
-            <div class="reward-box rew-3">Rescue fund</div>
-            <div class="reward-box rew-4">Invite Friends</div>
-        </div>
-    </div>
-
-    <div id="memberView" class="page-view">
-        <div class="member-bg">
-            <div class="profile-card">
-                <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" alt="User">
-                <div class="profile-info">
-                    <h3 id="panelUser">User</h3>
-                    <p>Joined: 2026-06-14</p>
-                    <div class="balance-display">৳ <span id="panelBalance">10.37</span></div>
+    <div id="loginPageView" class="page-view">
+        <div class="login-view-container">
+            <div class="login-title">CTH999.COM</div>
+            <form onsubmit="executeGmailAuth(event)">
+                <div class="login-input-group">
+                    <span>📧</span>
+                    <input type="email" id="gmailField" placeholder="Gmail address" required>
                 </div>
+                <div class="login-input-group">
+                    <span>🔒</span>
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="login-meta">
+                    <label><input type="checkbox" checked> Remember</label>
+                    <span style="color:#ffcc00; cursor:pointer;">Forgot password?</span>
+                </div>
+                <button type="submit" class="yellow-submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="depositView" class="page-view">
+        <div class="deposit-panel">
+            <div class="dep-section-title"><span style="color:red;">•</span> Deposit Method</div>
+            <div class="dep-methods">
+                <div class="dep-method-card active">Bkash VIP</div>
+                <div class="dep-method-card" style="opacity:0.6;">NAGAD VIP</div>
             </div>
-            <div class="member-grid-menu" id="memberMenuGrid"></div>
+            <div class="note-container">
+                !!! NOTE : অনুগ্রহ করে আপনার ডিপোজিট করার পরে অবশ্যই আপনার Trx-ID আইডি সাবমিট করবেন। তাহলে খুব দ্রুত আপনার অ্যাকাউন্টের মধ্যে টাকা যোগ হয়ে যাবে। !!!
+            </div>
+            <div class="dep-section-title"><span style="color:teal;">•</span> Payment channels</div>
+            <div style="font-size:12px; padding:10px; background:#f9f9f9; border-radius:6px; margin-bottom:15px; font-weight:bold; border:1px solid #eee; color:#ff007c;">
+                Bkash VIP CHANNEL
+            </div>
+            <div class="dep-section-title"><span style="color:purple;">•</span> Deposit Amounts</div>
+            <div class="amount-grid">
+                <div class="amount-btn" onclick="setAmount(100)">100</div>
+                <div class="amount-btn" onclick="setAmount(500)">500</div>
+                <div class="amount-btn" onclick="setAmount(1000)">1,000</div>
+                <div class="amount-btn" onclick="setAmount(5000)">5,000</div>
+                <div class="amount-btn" onclick="setAmount(10000)">10,000</div>
+            </div>
+            <input type="text" class="amount-input-box" id="depositAmountInput" value="৳ 100 - 50,000" readonly>
+            <button class="next-step-btn" id="depNextBtn">Next</button>
+        </div>
+    </div>
+
+    <div id="withdrawView" class="page-view">
+        <div class="withdraw-panel">
+            <div class="bank-card-mock">
+                <div class="bank-card-title">💳 BKash</div>
+                <div class="bank-card-num">********7524</div>
+                <div>Available: ৳ 10.37</div>
+                <button class="add-card-btn">+</button>
+            </div>
+            <div style="font-size:12px; color:#666; line-height:1.8;">
+                <p>Withdrawal time: 24 hours</p>
+                <p style="color:red; font-weight:bold; margin-top:10px;">Please complete the required turnover for withdrawal.</p>
+            </div>
         </div>
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="changeTab('home', this)">
+        <div class="nav-item active" onclick="changeTab('home')">
             <div class="nav-icon">🏠</div><div>Home</div>
         </div>
-        <div class="nav-item" onclick="handleNavigationWithAuth('promotion', this)">
+        <div class="nav-item" onclick="handleProtectedNavigation('home')">
             <div class="nav-icon">🎁</div><div>Promotion</div>
         </div>
-        <div class="nav-item nav-item-center" onclick="handleNavigationWithAuth('invite', this)">
+        <div class="nav-item nav-item-center" onclick="handleProtectedNavigation('home')">
             <div class="nav-icon">🔗</div>
         </div>
-        <div class="nav-item" onclick="handleNavigationWithAuth('reward', this)">
+        <div class="nav-item" onclick="handleProtectedNavigation('home')">
             <div class="nav-icon">🏆</div><div>Reward</div>
         </div>
-        <div class="nav-item" onclick="handleNavigationWithAuth('member', this)">
+        <div class="nav-item" onclick="handleProtectedNavigation('home')">
             <div class="nav-icon">👤</div><div>Member</div>
-        </div>
-    </div>
-
-    <div id="regModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('regModal')">&times;</span>
-            <h2>Create New Account</h2>
-            <form onsubmit="executeAuth(event, 'reg')">
-                <div class="form-group"><label>Gmail Address</label><input type="email" id="regEmail" placeholder="example@gmail.com" required></div>
-                <div class="form-group"><label>Password</label><input type="password" placeholder="Password" required></div>
-                <button type="submit" class="submit-btn">Register</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
-            <h2>Account Login</h2>
-            <form onsubmit="executeAuth(event, 'login')">
-                <div class="form-group"><label>Gmail Address</label><input type="email" id="loginEmail" placeholder="example@gmail.com" required></div>
-                <div class="form-group"><label>Password</label><input type="password" required></div>
-                <button type="submit" class="submit-btn">Login</button>
-            </form>
         </div>
     </div>
 
     <script>
         let sessionActive = false;
 
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        // স্প্ল্যাশ স্ক্রিন ফিক্সড অ্যানিমেশন স্ক্রিপ্ট (7171.jpg)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splashScreen');
+                if (splash) {
+                    splash.style.opacity = '0';
+                    splash.style.transform = 'translateY(-100%)';
+                    setTimeout(() => splash.style.display = 'none', 500);
+                }
+            }, 2500);
+        });
 
-        function changeTab(target, element) {
+        function changeTab(target) {
             document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            const targetView = document.getElementById(target + 'View');
+            if (targetView) targetView.classList.add('active');
             
-            document.getElementById(target + 'View').classList.add('active');
-            if(element) element.classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            if(target === 'home') document.querySelectorAll('.nav-item')[0].classList.add('active');
         }
 
-        function handleNavigationWithAuth(target, element) {
-            if (!sessionActive) { openModal('loginModal'); } else { changeTab(target, element); }
+        // ক্লিয়ার হোম পেজ প্রোটেকশন
+        function handleProtectedNavigation(target) {
+            if (!sessionActive) {
+                changeTab('loginPage');
+            } else {
+                changeTab(target);
+            }
         }
 
-        function handleProtectedAction(actionName) {
-            if (!sessionActive) { openModal('loginModal'); } else { alert(actionName + ' loaded.'); }
-        }
-
-        // জিমেইল থেকে ইউজারনেম আলাদা করার ইঞ্জিন ও লগইন মেকানিজম
-        function executeAuth(event, type) {
+        // জিমেইল অথেন্টিকেশন ইঞ্জিন (7174.jpg)
+        function executeGmailAuth(event) {
             event.preventDefault();
             sessionActive = true;
             
-            let emailInput = type === 'reg' ? document.getElementById('regEmail').value : document.getElementById('loginEmail').value;
-            let extractedUser = emailInput.split('@')[0]; // জিমেইল এর @ এর আগের অংশ ইউজারনেম হিসেবে নেবে
-            
             document.getElementById('headerAuthBox').style.display = 'none';
             document.getElementById('headerUserPanel').style.display = 'flex';
-            document.getElementById('panelUser').innerText = extractedUser;
-            document.getElementById('referralLinkField').value = "http://www.cth-999.vip/?r=" + extractedUser;
             
-            closeModal('regModal');
-            closeModal('loginModal');
             changeTab('home');
-            
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.nav-item')[0].classList.add('active');
+            alert('লগইন সফল হয়েছে! সমস্ত গেটওয়ে এবং চ্যানাল আনলকড।');
         }
 
-        setInterval(() => {
-            let num = 123590076 + Math.floor(Math.random() * 5000);
-            let decimals = Math.floor(Math.random() * 99);
-            document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
-        }, 3000);
+        function setAmount(val) {
+            document.getElementById('depositAmountInput').value = "৳ " + val;
+            let btn = document.getElementById('depNextBtn');
+            btn.style.background = 'linear-gradient(180deg, #ffe600, #cc9900)';
+            btn.style.color = '#000';
+            btn.style.cursor = 'pointer';
+        }
 
+        // লাইভ জ্যাকারপট সিমিউলেশন
+        setInterval(() => {
+            let num = 123590076 + Math.floor(Math.random() * 8000);
+            document.getElementById('jackpotBox').innerText = num.toLocaleString() + ".19";
+        }, 2500);
+
+        // গেমিং ডাটা রেন্ডারিং
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
                 .then(data => {
                     const container = document.getElementById('gameSectionsContainer');
+                    if (!container) return;
                     let finalHTML = '';
 
                     data.categories.forEach(cat => {
                         let gridHTML = '';
                         cat.list.forEach(game => {
                             gridHTML += `
-                                <div class="game-card" onclick="handleProtectedAction('${game.name}')">
+                                <div class="game-card" onclick="handleProtectedNavigation('home')">
                                     <img class="game-img" src="${game.image}" alt="${game.name}">
                                     <div class="game-info">${game.name}</div>
                                 </div>
@@ -343,18 +333,6 @@
                         `;
                     });
                     container.innerHTML = finalHTML;
-
-                    const menuContainer = document.getElementById('memberMenuGrid');
-                    let menuHTML = '';
-                    data.memberMenu.forEach(item => {
-                        menuHTML += `
-                            <div class="menu-icon-box" onclick="alert('${item.name} opened.')">
-                                <div class="menu-circle">${item.icon}</div>
-                                <div class="menu-title">${item.name}</div>
-                            </div>
-                        `;
-                    });
-                    menuContainer.innerHTML = menuHTML;
                 });
         });
     </script>
