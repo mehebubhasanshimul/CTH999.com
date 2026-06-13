@@ -158,6 +158,7 @@
 </head>
 <body>
 
+    <!-- ⏳ uni-app ডট লোডার কন্টেইনার -->
     <div id="appLoader">
         <div class="box-block">
             <div class="box-item box-ani1"></div>
@@ -170,6 +171,7 @@
         <div class="loader-text">Loading secure lines... Please wait</div>
     </div>
 
+    <!-- হেডার -->
     <header>
         <div class="logo-area" onclick="changeTab('home')">
             <img class="logo-img" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="Logo">
@@ -200,6 +202,7 @@
         <button class="filter-btn" onclick="handleProtectedAction('Slots Category')">🎰 SLOTS</button>
     </div>
 
+    <!-- ১. হোম পেজ ভিউ -->
     <div id="homeView" class="page-view active">
         <div class="banner-box"></div>
         <div class="jackpot-container">
@@ -207,40 +210,49 @@
             <div class="jackpot-counter" id="jackpotBox">123,591,624.89</div>
         </div>
         
+        <!-- 🚀 সরাসরি ওপেন সোর্স ডেমো জোন -->
         <div class="section-header">
             <div class="section-title">🔥 POPULAR LIVE CASINO & SLOTS</div>
             <div class="see-all">Play Now ›</div>
         </div>
         <div class="game-grid" id="staticDemoGamesGrid" style="margin-bottom: 20px;">
-            <div class="game-card" onclick="redirectAndPlayRealGame('Super Ace', 'https://demo.jilicaco.com/slot/super-ace')">
+            <!-- ১. নতুন এবং সচল Super Ace গ্লোবাল ডেমো ইউআরএল -->
+            <div class="game-card" onclick="redirectAndPlayRealGame('Super Ace', 'https://www.jiligames.com/gameers/detail?id=84&type=slot')">
                 <img class="game-img" src="https://images.unsplash.com/photo-1596838132731-3301c3fd4317?w=300&q=80" alt="Super Ace">
                 <div class="game-info" style="background: linear-gradient(90deg, #ff9900, #cc5500);">Super Ace (JILI)</div>
             </div>
+            <!-- ২. এভিয়েটর গেম (Spribe) -->
             <div class="game-card" onclick="redirectAndPlayRealGame('Aviator', 'https://aviator-demo.spribegaming.com/?currency=USD&operator=demo&jurisdiction=CW&lang=EN&return_url=https://spribe.co/games&user=11217&token=QLI9zp8EkArEUiEocyTCWWny472cclKi')">
                 <img class="game-img" src="https://i.ibb.co.com/7186.jpg" alt="Aviator">
                 <div class="game-info" style="background: linear-gradient(90deg, #ff0055, #990022);">Aviator (Spribe)</div>
             </div>
+            <!-- ৩. মিনি রুলেট (Mini Roulette) -->
             <div class="game-card" onclick="redirectAndPlayRealGame('Mini Roulette', 'https://turbo.spribegaming.com/mini-roulette?currency=USD&operator=demo&jurisdiction=CW&lang=EN&return_url=https:%2F%2Fspribe.co%2Fgames&user=32419&token=6OpUvZITUXgAckxxGnFxcg7q84L48utP')">
                 <img class="game-img" src="https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=300&q=80" alt="Mini Roulette">
                 <div class="game-info" style="background: linear-gradient(90deg, #2af598, #009efd); color:#000;">Mini Roulette</div>
             </div>
+            <!-- ৪. চিকেন গেম (Chicken) -->
             <div class="game-card" onclick="redirectAndPlayRealGame('Chicken Game', 'https://pilot-chicken-demo.spribegaming.com/?currency=USD&operator=demo&jurisdiction=CW&lang=EN&return_url=https%3A%2F%2Fspribe.co%2Fgames&user=18217&token=l6JXFmEFuBAcQfYfGfW5dVihpaRWxXXG')">
                 <img class="game-img" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&q=80" alt="Chicken">
                 <div class="game-info" style="background: linear-gradient(90deg, #ffcc00, #b88600);">Chicken Game</div>
             </div>
+            <!-- ৫. স্প্রিংবিল্ডার লঞ্চ (Springbuilder Launch) -->
             <div class="game-card" onclick="redirectAndPlayRealGame('Springbuilder Launch', 'https://games.springbuilder.site/LaunchGame')">
                 <img class="game-img" src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=300&q=80" alt="Springbuilder">
                 <div class="game-info" style="background: linear-gradient(90deg, #b182ff, #7033ff);">Springbuilder</div>
             </div>
+            <!-- ৬. পাসকাল মার্কেট (Posted Market) -->
             <div class="game-card" onclick="redirectAndPlayRealGame('Posted Market', 'https://pg.pascalgaming.com/launcher/launch?launchToken=29d30b04-650a-44cb-8297-54cc8b242e16&returnPath=%2Flaunch%3FgameId%3D210%26mode%3Dreal%26partnerKey%3D9b0b0a92-f1a0-48e7-8fab-71b243140207%26culture%3Den%26token%3Dtoken_155')">
                 <img class="game-img" src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=300&q=80" alt="Posted Market">
                 <div class="game-info" style="background: linear-gradient(90deg, #00ffcc, #005544); color: #000;">Posted Market</div>
             </div>
         </div>
 
+        <!-- এপিআই ডাটা এরিয়া -->
         <div id="gameSectionsContainer"></div>
     </div>
 
+    <!-- 📱 ৪. প্রফেশনাল লগইন ইন্টারফেস ভিউ -->
     <div id="loginPageView" class="page-view">
         <div class="login-view-container">
             <div class="login-title">CTH999.COM</div>
@@ -262,6 +274,7 @@
         </div>
     </div>
 
+    <!-- ২. ডিপোজিট গেটওয়ে ভিউ -->
     <div id="depositView" class="page-view">
         <div class="deposit-panel">
             <div class="dep-label-title">Deposit Method</div>
@@ -287,6 +300,7 @@
         </div>
     </div>
 
+    <!-- ৩. উইথড্রয়াল গেটওয়ে ভিউ -->
     <div id="withdrawView" class="page-view">
         <div class="withdraw-panel">
             <div class="withdraw-card-view">
@@ -303,11 +317,13 @@
         </div>
     </div>
 
+    <!-- ডাউন প্যানেলস -->
     <div id="promotionView" class="page-view"><div class="promo-card"><div class="promo-banner" style="background: linear-gradient(135deg, #0d3842, #174f5e);"></div><div class="promo-footer"><span>TAKAA ALLIANCE</span><button class="view-btn">view</button></div></div></div>
     <div id="inviteView" class="page-view"><div class="grid-stats"><div class="stat-box stat-blue"><div class="stat-label">Today's Income</div>--</div></div><div class="invite-box"><input type="text" id="referralLinkField" value="http://www.cth-999.vip/?r=user" readonly></div></div>
     <div id="rewardView" class="page-view"><div class="reward-grid"><div class="reward-box rew-1">Bonus</div><div class="reward-box rew-2">Sign In</div></div></div>
     <div id="memberView" class="page-view"><div class="member-bg"><div class="profile-card"><img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" alt="User"><div class="profile-info"><h3 id="panelUser">User</h3><p>Joined: 2026-06-14</p><div class="balance-display">৳ <span id="panelBalance">10.37</span></div></div></div><div class="member-grid-menu" id="memberMenuGrid"></div></div></div>
 
+    <!-- Bottom Navigation Fixed -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="changeTab('home', this)"><div class="nav-icon">🏠</div><div>Home</div></div>
         <div class="nav-item" onclick="handleNavigationWithAuth('promotion', this)"><div class="nav-icon">🎁</div><div>Promotion</div></div>
@@ -347,7 +363,7 @@
             if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
         }
 
-        // 🕹️ পপ-আপ প্লেয়ার (সিকিউরিটি এরর এড়ানোর জন্য ডিরেক্ট সেশন হ্যান্ডলার)
+        // 🕹️ নিরাপদ সেশন উইন্ডো ওপেনার
         function redirectAndPlayRealGame(gameName, gameUrl) {
             if (!sessionActive) {
                 changeTab('loginPage');
@@ -391,7 +407,7 @@
             document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
         }, 3000);
 
-        // 🔗 এপিআই ম্যাপিং ডাটা স্ট্রাকচার
+        // 🔗 এপিআই রেন্ডারিং
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
