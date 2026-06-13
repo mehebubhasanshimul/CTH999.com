@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="BN" content="notranslate">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="google" content="notranslate"/>
+    <meta name="theme-color" content="#120224"/>
+    <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    
+    <title>CTH999.COM | ক্যাসিনো, স্লটস ও লাইভ গেমিং বাংলাদেশ</title>
+    <meta name="description" content="CTH999.COM বাংলাদেশের সবচেয়ে নিরাপদ ও প্রফেশনাল গেমিং প্ল্যাটফর্ম। ১৫,০০০+ গেম উপভোগ করুন।"/>
+    
+    <link rel="shortcut icon" href="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png"/>
+    
+    <style>
+        :root { --vh: 1vh; --neon-cyan: #00ffcc; --neon-pink: #ff007c; --bg-dark: #0e011a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        
+        body { 
+            background-color: var(--bg-dark); 
+            color: #fff; 
+            min-height: calc(var(--vh) * 100);
+            display: flex; flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* প্রফেশনাল হেডার */
+        header {
+            width: 100%; background: #17032b; padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--neon-pink); box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        
+        /* আপনার দেওয়া লোগো সাইজ ও স্টাইল */
+        .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid var(--neon-cyan); } 
+        
+        .logo-text { font-size: 24px; font-weight: 800; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
+        
+        .auth-btns button { padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .login-btn { background: transparent; color: #fff; border: 1px solid #fff !important; margin-right: 8px; }
+        .reg-btn { background: linear-gradient(45deg, var(--neon-pink), #ff5500); color: #fff; box-shadow: 0 0 10px var(--neon-pink); }
+        .reg-btn:hover, .login-btn:hover { transform: scale(1.03); }
+
+        /* হিরো ব্যানার */
+        .hero-banner {
+            width: 100%; max-width: 1200px; margin: 20px auto; padding: 0 15px;
+        }
+        
+        /* আপনার দেওয়া মূল বড় ব্যানার ইমেজ এখানে আপডেট করা হয়েছে */
+        .banner-box {
+            width: 100%; height: 260px; border-radius: 12px;
+            background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png');
+            background-size: cover; background-position: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.8), 0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* ব্যানারের ভেতরের টেক্সট ওভারলে (ছবির ওপরে লেখা সুন্দর দেখানোর জন্য) */
+        .banner-text-bg {
+            background: rgba(14, 1, 26, 0.6); padding: 15px; border-radius: 8px; backdrop-filter: blur(5px);
+            max-width: 500px; border-left: 4px solid var(--neon-pink);
+        }
+        .banner-box h1 { font-size: 24px; color: #fff; margin-bottom: 5px; }
+        .banner-box p { color: var(--neon-cyan); font-weight: bold; font-size: 14px; }
+
+        /* নোটিশ বার */
+        .notice-bar { width: 100%; background: #1a0230; padding: 8px 20px; font-size: 13px; color: #bbb; border-bottom: 1px solid #2d0752; }
+
+        /* গেম সেকশন গ্রিড */
+        .main-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px 15px; flex: 1; }
+        .section-title { font-size: 18px; margin-bottom: 15px; border-left: 4px solid var(--neon-cyan); padding-left: 10px; font-weight: 700; }
+        
+        .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+        .game-card { 
+            background: #1b0433; border-radius: 10px; overflow: hidden; 
+            border: 1px solid #2d0954; transition: 0.3s; cursor: pointer;
+            position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .game-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,255,204,0.2); }
+        
+        .game-img { width: 100%; height: 120px; object-fit: cover; background: #260747; }
+        .game-info { padding: 10px; text-align: center; font-size: 14px; font-weight: 600; color: #ddd; background: #140226; }
+
+        /* পপ-আপ মডাল */
+        .modal { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; 
+        }
+        .modal-content { 
+            background: #1e0338; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; 
+            border: 1px solid var(--neon-pink); position: relative; box-shadow: 0 0 20px var(--neon-pink);
+        }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 22px; cursor: pointer; color: #aaa; }
+        .modal h2 { margin-bottom: 20px; color: var(--neon-cyan); text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 14px; color: #ccc; }
+        .form-group input { width: 100%; padding: 12px; background: #0e011a; border: 1px solid #3d0973; border-radius: 6px; color: #fff; font-size: 15px; }
+        .form-group input:focus { border-color: var(--neon-cyan); outline: none; }
+        .submit-btn { width: 100%; padding: 12px; background: linear-gradient(45deg, var(--neon-pink), #ff5500); border: none; color: #fff; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+
+        /* ফুটার */
+        footer { background: #07000d; padding: 20px; text-align: center; font-size: 12px; color: #5c4d6e; border-top: 1px solid #17032b; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img class="logo-img" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="CTH999 Logo">
+            <div class="logo-text">CTH999.COM</div>
+        </div>
+        <div class="auth-btns">
+            <button class="login-btn" onclick="openModal('loginModal')">লগইন</button>
+            <button class="reg-btn" onclick="openModal('regModal')">নিবন্ধন</button>
+        </div>
+    </header>
+
+    <div class="notice-bar">
+        <marquee scrollamount="4">📢 স্বাগতম CTH999.COM-এ! নতুন অ্যাকাউন্ট খুললেই পাচ্ছেন ১০০% ফার্স্ট ডিপোজিট বোনাস। আমাদের ২৪/৭ কাস্টমার সার্ভিস এখন লাইভ।</marquee>
+    </div>
+
+    <div class="hero-banner">
+        <div class="banner-box">
+            <div class="banner-text-bg">
+                <h1>মেগা জ্যাকারপট ও লাইভ ক্যাসিনো</h1>
+                <p>আজই খেলুন বাংলাদেশের সেরা ও বিশ্বাসযোগ্য প্ল্যাটফর্মে</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-container">
+        <h2 class="section-title">জনপ্রিয় গেমসমূহ</h2>
+        <div class="game-grid" id="gameContainer">
+            </div>
+    </main>
+
+    <div id="regModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('regModal')">&times;</span>
+            <h2>নতুন অ্যাকাউন্ট তৈরি</h2>
+            <form onsubmit="handleAuth(event, 'নিবন্ধন')">
+                <div class="form-group">
+                    <label>ইউজারনেম</label>
+                    <input type="text" placeholder="কমপক্ষে ৪ অক্ষরের নাম" required>
+                </div>
+                <div class="form-group">
+                    <label>পাসওয়ার্ড</label>
+                    <input type="password" placeholder="গোপন পাসওয়ার্ড দিন" required>
+                </div>
+                <div class="form-group">
+                    <label>মোবাইল নম্বর</label>
+                    <input type="tel" placeholder="01XXXXXXXXX" required>
+                </div>
+                <button type="submit" class="submit-btn">নিবন্ধন করুন</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+            <h2>অ্যাকাউন্টে লগইন</h2>
+            <form onsubmit="handleAuth(event, 'লগইন')">
+                <div class="form-group">
+                    <label>ইউজারনেম / ফোন নম্বর</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>পাসওয়ার্ড</label>
+                    <input type="password" required>
+                </div>
+                <button type="submit" class="submit-btn">লগইন</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 CTH999.COM | নিবন্ধন নম্বর: BD-GAME-2026-CTH999। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script>
+        // ভিউপোর্ট হাইট ফিক্স
+        !function(){if(!CSS.supports("height","1dvh")){var e=.01*window.innerHeight,t=document.documentElement,n=e+"px";t.style.getPropertyValue("--vh")!==n&&t.style.setProperty("--vh",n)}}();
+
+        // মডাল ওপেন ও ক্লোজ ফাংশন
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        // ফর্ম সাবমিট হ্যান্ডলার
+        function handleAuth(event, type) {
+            event.preventDefault();
+            alert(type + ' সফল হয়েছে! (এডুকেশনাল ডেমো মোড)');
+            closeModal('regModal');
+            closeModal('loginModal');
+        }
+
+        // ব্যাকএন্ড থেকে ডেটা এনে রেন্ডার করা
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/loadMemberCenter')
+                .then(res => res.json())
+                .then(data => {
+                    const container = document.getElementById('gameContainer');
+                    let html = '';
+                    data.games.forEach(game => {
+                        html += `
+                            <div class="game-card" onclick="alert('${game.name} গেমটি লোড হচ্ছে...')">
+                                <img class="game-img" src="${game.image}" alt="${game.name}">
+                                <div class="game-info">${game.name}</div>
+                            </div>
+                        `;
+                    });
+                    container.innerHTML = html;
+                })
+                .catch(err => console.error("ডাটা লোড করতে সমস্যা হয়েছে:", err));
+        });
+    </script>
+</body>
+</html>
