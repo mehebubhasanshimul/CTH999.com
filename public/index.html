@@ -3,159 +3,180 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="google" content="notranslate"/>
-    <meta name="theme-color" content="#120224"/>
+    <meta name="theme-color" content="#062229"/>
     <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     
     <title>CTH999.COM | ক্যাসিনো, স্লটস ও লাইভ গেমিং বাংলাদেশ</title>
-    <meta name="description" content="CTH999.COM বাংলাদেশের সবচেয়ে নিরাপদ ও প্রফেশনাল গেমিং প্ল্যাটফর্ম। ১৫,০০০+ গেম উপভোগ করুন।"/>
+    <meta name="description" content="CTH999.COM বাংলাদেশের সবচেয়ে নিরাপদ ও প্রফেশনাল গেমিং প্ল্যাটফর্ম।"/>
     
     <link rel="shortcut icon" href="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png"/>
     
     <style>
-        :root { --vh: 1vh; --neon-cyan: #00ffcc; --neon-pink: #ff007c; --bg-dark: #0e011a; }
+        :root { 
+            --vh: 1vh; 
+            --primary-teal: #00ffcc; 
+            --bg-dark-teal: #062229; 
+            --card-bg: #09343f;
+            --btn-yellow: #ffcc00;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         
         body { 
-            background-color: var(--bg-dark); 
+            background-color: var(--bg-dark-teal); 
             color: #fff; 
             min-height: calc(var(--vh) * 100);
             display: flex; flex-direction: column;
+            padding-bottom: 70px; /* বটম বারের জন্য জায়গা */
             overflow-x: hidden;
         }
 
-        /* প্রফেশনাল হেডার */
+        /* প্রফেশনাল হেডার (স্ক্রিনশটের মতো লিনিয়ার ডিজাইন) */
         header {
-            width: 100%; background: #17032b; padding: 15px 20px;
+            width: 100%; background: #04191f; padding: 12px 15px;
             display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 2px solid var(--neon-pink); box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-            position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid #0d4654; position: sticky; top: 0; z-index: 100;
         }
-        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .logo-img { width: 35px; height: 35px; border-radius: 50%; object-fit: cover; } 
+        .logo-text { font-size: 20px; font-weight: bold; color: var(--primary-teal); }
         
-        /* আপনার দেওয়া লোগো সাইজ ও স্টাইল */
-        .logo-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid var(--neon-cyan); } 
-        
-        .logo-text { font-size: 24px; font-weight: 800; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
-        
-        .auth-btns button { padding: 10px 20px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .login-btn { background: transparent; color: #fff; border: 1px solid #fff !important; margin-right: 8px; }
-        .reg-btn { background: linear-gradient(45deg, var(--neon-pink), #ff5500); color: #fff; box-shadow: 0 0 10px var(--neon-pink); }
-        .reg-btn:hover, .login-btn:hover { transform: scale(1.03); }
+        .auth-btns button { padding: 8px 16px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 14px; }
+        .login-btn { background: #0e3d47; color: #fff; margin-right: 8px; border: 1px solid #1c6373 !important; }
+        .reg-btn { background: linear-gradient(180deg, #ffe600, #cc9900); color: #000; }
 
         /* হিরো ব্যানার */
-        .hero-banner {
-            width: 100%; max-width: 1200px; margin: 20px auto; padding: 0 15px;
-        }
-        
-        /* আপনার দেওয়া মূল বড় ব্যানার ইমেজ এখানে আপডেট করা হয়েছে */
+        .hero-banner { width: 100%; max-width: 1200px; margin: 12px auto; padding: 0 12px; }
         .banner-box {
-            width: 100%; height: 260px; border-radius: 12px;
+            width: 100%; height: 160px; border-radius: 10px;
             background-image: url('https://i.ibb.co.com/m5Pyh1N2/file-00000000321c7206a4ea020cb2c74b11.png');
             background-size: cover; background-position: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.8), 0 4px 15px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
+            border: 1px solid #0d4654;
         }
-        
-        /* ব্যানারের ভেতরের টেক্সট ওভারলে (ছবির ওপরে লেখা সুন্দর দেখানোর জন্য) */
-        .banner-text-bg {
-            background: rgba(14, 1, 26, 0.6); padding: 15px; border-radius: 8px; backdrop-filter: blur(5px);
-            max-width: 500px; border-left: 4px solid var(--neon-pink);
+
+        /* জ্যাকপট ডিসপ্লে বার */
+        .jackpot-container {
+            background: #04161a; border-radius: 8px; margin: 15px 12px; padding: 12px;
+            text-align: center; border: 1px dashed var(--primary-teal);
         }
-        .banner-box h1 { font-size: 24px; color: #fff; margin-bottom: 5px; }
-        .banner-box p { color: var(--neon-cyan); font-weight: bold; font-size: 14px; }
+        .jackpot-title { color: #ffcc00; font-size: 20px; font-weight: 900; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
+        .jackpot-counter { display: inline-flex; gap: 4px; font-size: 22px; font-weight: bold; color: #fff; background: #111; padding: 6px 12px; border-radius: 4px; border: 1px solid #222; font-family: monospace; }
 
-        /* নোটিশ বার */
-        .notice-bar { width: 100%; background: #1a0230; padding: 8px 20px; font-size: 13px; color: #bbb; border-bottom: 1px solid #2d0752; }
-
-        /* গেম সেকশন গ্রিড */
-        .main-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px 15px; flex: 1; }
-        .section-title { font-size: 18px; margin-bottom: 15px; border-left: 4px solid var(--neon-cyan); padding-left: 10px; font-weight: 700; }
+        /* ক্যাটাগরি কন্টেইনার */
+        .main-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 12px; flex: 1; }
         
-        .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; }
+        .section-header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin: 20px 0 10px 0; border-left: 4px solid var(--primary-teal); padding-left: 8px; 
+        }
+        .section-title { font-size: 16px; font-weight: bold; color: var(--primary-teal); text-transform: uppercase; }
+        .see-all { font-size: 12px; color: #999; cursor: pointer; background: #0a353f; padding: 3px 8px; border-radius: 4px; }
+        
+        /* গেম গ্রিড (স্ক্রিনশটের ৩ কলাম বিন্যাস) */
+        .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
         .game-card { 
-            background: #1b0433; border-radius: 10px; overflow: hidden; 
-            border: 1px solid #2d0954; transition: 0.3s; cursor: pointer;
-            position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background: var(--card-bg); border-radius: 8px; overflow: hidden; 
+            border: 1px solid #0d4654; position: relative; display: flex; flex-direction: column;
         }
-        .game-card:hover { border-color: var(--neon-cyan); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,255,204,0.2); }
-        
-        .game-img { width: 100%; height: 120px; object-fit: cover; background: #260747; }
-        .game-info { padding: 10px; text-align: center; font-size: 14px; font-weight: 600; color: #ddd; background: #140226; }
+        .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .game-info { padding: 6px; text-align: center; font-size: 11px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); }
+
+        /* 📱 ফিক্সড বটম নেভিগেশন বার (স্ক্রিনশটের হুবহু ডিজাইন) */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 60px;
+            background: #031418; border-top: 1px solid #0d4654;
+            display: flex; justify-content: space-around; align-items: center;
+            z-index: 1000; box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+        }
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center;
+            color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer;
+        }
+        .nav-item.active { color: var(--primary-teal); }
+        .nav-icon { font-size: 20px; margin-bottom: 2px; }
+
+        /* সেন্ট্রাল ইনভাইট বাটন স্পেশাল স্টাইল */
+        .nav-item-center {
+            background: linear-gradient(180deg, #00ffcc, #009977);
+            width: 44px; height: 44px; border-radius: 50%;
+            justify-content: center; color: #fff !important;
+            box-shadow: 0 0 10px rgba(0,255,204,0.4); transform: translateY(-8px);
+        }
+        .nav-item-center .nav-icon { margin-bottom: 0; font-size: 22px; }
 
         /* পপ-আপ মডাল */
         .modal { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; 
+            background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; 
         }
         .modal-content { 
-            background: #1e0338; padding: 30px; border-radius: 12px; width: 90%; max-width: 400px; 
-            border: 1px solid var(--neon-pink); position: relative; box-shadow: 0 0 20px var(--neon-pink);
+            background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 380px; 
+            border: 1px solid var(--primary-teal); position: relative;
         }
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 22px; cursor: pointer; color: #aaa; }
-        .modal h2 { margin-bottom: 20px; color: var(--neon-cyan); text-align: center; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; margin-bottom: 5px; font-size: 14px; color: #ccc; }
-        .form-group input { width: 100%; padding: 12px; background: #0e011a; border: 1px solid #3d0973; border-radius: 6px; color: #fff; font-size: 15px; }
-        .form-group input:focus { border-color: var(--neon-cyan); outline: none; }
-        .submit-btn { width: 100%; padding: 12px; background: linear-gradient(45deg, var(--neon-pink), #ff5500); border: none; color: #fff; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
-
-        /* ফুটার */
-        footer { background: #07000d; padding: 20px; text-align: center; font-size: 12px; color: #5c4d6e; border-top: 1px solid #17032b; }
+        .close-btn { position: absolute; top: 12px; right: 18px; font-size: 22px; cursor: pointer; color: #aaa; }
+        .modal h2 { margin-bottom: 15px; color: var(--primary-teal); text-align: center; font-size: 18px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; margin-bottom: 4px; font-size: 13px; color: #ccc; }
+        .form-group input { width: 100%; padding: 10px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 14px; }
+        .form-group input:focus { border-color: var(--primary-teal); outline: none; }
+        .submit-btn { width: 100%; padding: 12px; background: linear-gradient(180deg, #ffe600, #cc9900); border: none; color: #000; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 8px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-area">
-            <img class="logo-img" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="CTH999 Logo">
+            <img class="logo-img" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="Logo">
             <div class="logo-text">CTH999.COM</div>
         </div>
         <div class="auth-btns">
-            <button class="login-btn" onclick="openModal('loginModal')">লগইন</button>
-            <button class="reg-btn" onclick="openModal('regModal')">নিবন্ধন</button>
+            <button class="login-btn" onclick="openModal('loginModal')">Login</button>
+            <button class="reg-btn" onclick="openModal('regModal')">Register</button>
         </div>
     </header>
 
-    <div class="notice-bar">
-        <marquee scrollamount="4">📢 স্বাগতম CTH999.COM-এ! নতুন অ্যাকাউন্ট খুললেই পাচ্ছেন ১০০% ফার্স্ট ডিপোজিট বোনাস। আমাদের ২৪/৭ কাস্টমার সার্ভিস এখন লাইভ।</marquee>
+    <div class="hero-banner">
+        <div class="banner-box"></div>
     </div>
 
-    <div class="hero-banner">
-        <div class="banner-box">
-            <div class="banner-text-bg">
-                <h1>মেগা জ্যাকারপট ও লাইভ ক্যাসিনো</h1>
-                <p>আজই খেলুন বাংলাদেশের সেরা ও বিশ্বাসযোগ্য প্ল্যাটফর্মে</p>
-            </div>
+    <div class="jackpot-container">
+        <div class="jackpot-title">🎰 Mega Jackpot 🎰</div>
+        <div class="jackpot-counter" id="jackpotBox">$102,678,159.00</div>
+    </div>
+
+    <main class="main-container" id="dynamicSections">
+        </main>
+
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="changeTab('home')">
+            <div class="nav-icon">🏠</div>
+            <div>Home</div>
+        </div>
+        <div class="nav-item" onclick="alert('প্রমোশন পেজ ডেমো')">
+            <div class="nav-icon">🎁</div>
+            <div>Promotion</div>
+        </div>
+        <div class="nav-item nav-item-center" onclick="alert('রেফারেল ও ইনভাইট লিংক ডেমো')">
+            <div class="nav-icon">🔗</div>
+        </div>
+        <div class="nav-item" onclick="alert('ডেইলি রিওয়ার্ডস ডেমো')">
+            <div class="nav-icon">🏆</div>
+            <div>Reward</div>
+        </div>
+        <div class="nav-item" onclick="openModal('loginModal')">
+            <div class="nav-icon">👤</div>
+            <div>Member</div>
         </div>
     </div>
-
-    <main class="main-container">
-        <h2 class="section-title">জনপ্রিয় গেমসমূহ</h2>
-        <div class="game-grid" id="gameContainer">
-            </div>
-    </main>
 
     <div id="regModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('regModal')">&times;</span>
-            <h2>নতুন অ্যাকাউন্ট তৈরি</h2>
-            <form onsubmit="handleAuth(event, 'নিবন্ধন')">
-                <div class="form-group">
-                    <label>ইউজারনেম</label>
-                    <input type="text" placeholder="কমপক্ষে ৪ অক্ষরের নাম" required>
-                </div>
-                <div class="form-group">
-                    <label>পাসওয়ার্ড</label>
-                    <input type="password" placeholder="গোপন পাসওয়ার্ড দিন" required>
-                </div>
-                <div class="form-group">
-                    <label>মোবাইল নম্বর</label>
-                    <input type="tel" placeholder="01XXXXXXXXX" required>
-                </div>
-                <button type="submit" class="submit-btn">নিবন্ধন করুন</button>
+            <h2>Create New Account</h2>
+            <form onsubmit="handleAuth(event, 'Registration')">
+                <div class="form-group"><label>Username</label><input type="text" placeholder="Username" required></div>
+                <div class="form-group"><label>Password</label><input type="password" placeholder="Password" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="01XXXXXXXXX" required></div>
+                <button type="submit" class="submit-btn">Register</button>
             </form>
         </div>
     </div>
@@ -163,59 +184,64 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
-            <h2>অ্যাকাউন্টে লগইন</h2>
-            <form onsubmit="handleAuth(event, 'লগইন')">
-                <div class="form-group">
-                    <label>ইউজারনেম / ফোন নম্বর</label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label>পাসওয়ার্ড</label>
-                    <input type="password" required>
-                </div>
-                <button type="submit" class="submit-btn">লগইন</button>
+            <h2>Account Login</h2>
+            <form onsubmit="handleAuth(event, 'Login')">
+                <div class="form-group"><label>Username / Phone</label><input type="text" required></div>
+                <div class="form-group"><label>Password</label><input type="password" required></div>
+                <button type="submit" class="submit-btn">Login</button>
             </form>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 CTH999.COM | নিবন্ধন নম্বর: BD-GAME-2026-CTH999। সর্বস্বত্ব সংরক্ষিত।</p>
-    </footer>
-
     <script>
-        // ভিউপোর্ট হাইট ফিক্স
         !function(){if(!CSS.supports("height","1dvh")){var e=.01*window.innerHeight,t=document.documentElement,n=e+"px";t.style.getPropertyValue("--vh")!==n&&t.style.setProperty("--vh",n)}}();
 
-        // মডাল ওপেন ও ক্লোজ ফাংশন
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-
-        // ফর্ম সাবমিট হ্যান্ডলার
         function handleAuth(event, type) {
             event.preventDefault();
-            alert(type + ' সফল হয়েছে! (এডুকেশনাল ডেমো মোড)');
-            closeModal('regModal');
-            closeModal('loginModal');
+            alert(type + ' successful! (Educational Demo Mode)');
+            closeModal('regModal'); closeModal('loginModal');
         }
 
-        // ব্যাকএন্ড থেকে ডেটা এনে রেন্ডার করা
+        // জ্যাকপট নাম্বার ডাইনামিকালি চেঞ্জ হওয়ার ডেমো ইফেক্ট
+        setInterval(() => {
+            let num = Math.floor(100000000 + Math.random() * 90000000);
+            document.getElementById('jackpotBox').innerText = "$" + num.toLocaleString() + ".99";
+        }, 3000);
+
+        // API থেকে স্ট্রাকচার্ড ডাটা লোড করা
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
                 .then(data => {
-                    const container = document.getElementById('gameContainer');
-                    let html = '';
-                    data.games.forEach(game => {
-                        html += `
-                            <div class="game-card" onclick="alert('${game.name} গেমটি লোড হচ্ছে...')">
-                                <img class="game-img" src="${game.image}" alt="${game.name}">
-                                <div class="game-info">${game.name}</div>
+                    const mainContainer = document.getElementById('dynamicSections');
+                    let finalHTML = '';
+
+                    // প্রতিটি ক্যাটাগরি লুপ করে সেকশন তৈরি করা (Hot, Sports, Live, Fish etc)
+                    data.categories.forEach(cat => {
+                        let gameCardsHTML = '';
+                        cat.list.forEach(game => {
+                            gameCardsHTML += `
+                                <div class="game-card" onclick="alert('${game.name} গেমটি চালু হচ্ছে...')">
+                                    <img class="game-img" src="${game.image}" alt="${game.name}">
+                                    <div class="game-info">${game.name}</div>
+                                </div>
+                            `;
+                        });
+
+                        finalHTML += `
+                            <div class="section-header">
+                                <div class="section-title">${cat.title}</div>
+                                <div class="see-all">See All (${cat.list.length})</div>
                             </div>
+                            <div class="game-grid">${gameCardsHTML}</div>
                         `;
                     });
-                    container.innerHTML = html;
+
+                    mainContainer.innerHTML = finalHTML;
                 })
-                .catch(err => console.error("ডাটা লোড করতে সমস্যা হয়েছে:", err));
+                .catch(err => console.error("ডাটা রেন্ডারিং এরর:", err));
         });
     </script>
 </body>
