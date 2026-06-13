@@ -97,7 +97,7 @@
         .filter-btn { background: #09343f; border: 1px solid #1c6373; padding: 8px 16px; border-radius: 6px; color: #fff; font-size: 12px; font-weight: bold; cursor: pointer; }
         .filter-btn.active { background: var(--primary-teal); color: #000; border-color: var(--primary-teal); }
 
-        /* জ্যাককপট */
+        /* জ্যাকপট */
         .jackpot-container { background: linear-gradient(180deg, #04191f, #09343f); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #1c6373; margin-bottom: 15px; }
         .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; }
         .jackpot-counter { font-size: 24px; font-weight: bold; color: #fff; font-family: monospace; }
@@ -111,17 +111,10 @@
         .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
         .game-info { padding: 5px; text-align: center; font-size: 10px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* 🎰 রিয়েল ইন-অ্যাপ গেম প্লে স্ক্রিন থিম */
-        #gamePlayerModal {
-            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #000; z-index: 5000; flex-direction: column;
-        }
-        .game-player-header {
-            width: 100%; height: 45px; background: #04191f; display: flex; 
-            justify-content: space-between; align-items: center; padding: 0 15px;
-            border-bottom: 1px solid #0d4654;
-        }
-        .exit-game-btn { background: var(--danger-red); color: #fff; border: none; padding: 6px 14px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 13px; }
+        /* 🕹️ ইন-অ্যাপ গেম প্লে স্ক্রিন মোড */
+        #gamePlayerModal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 5000; flex-direction: column; }
+        .game-player-header { width: 100%; height: 45px; background: #04191f; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; border-bottom: 1px solid #0d4654; }
+        .exit-game-btn { var(--danger-red); color: #fff; border: none; padding: 6px 14px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 13px; }
         .game-iframe { width: 100%; flex: 1; border: none; background: #000; }
 
         /* ডিপোজিট ও উইথড্র স্টাইল */
@@ -170,22 +163,21 @@
         .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; }
         .menu-title { font-size: 10px; font-weight: 600; color: #555; }
 
-        /* বটম নেভিগেশন বার */
+        /* 📱 প্রফেশনাল লগইন ইন্টারফেস ভিউ (7174.jpg లুকে) */
+        .login-view-container { max-width: 400px; margin: 40px auto; padding: 20px; text-align: center; }
+        .login-title { font-size: 26px; font-weight: 900; color: #ffcc00; margin-bottom: 30px; letter-spacing: 1px; }
+        .login-input-group { background: #04191f; border: 1px solid #1c6373; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .login-input-group input { background: transparent; border: none; width: 100%; color: #fff; font-size: 15px; font-weight: 600; }
+        .login-input-group input:focus { outline: none; }
+        .login-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #8da1a5; margin: 15px 0 25px 0; }
+        .yellow-submit-btn { width: 100%; padding: 14px; background: #ffcc00; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; color: #000; cursor: pointer; box-shadow: 0 4px 15px rgba(255,204,0,0.3); }
+
+        /* বটম বার */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; cursor: pointer; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
         .nav-item.active { color: var(--primary-teal); }
         .nav-icon { font-size: 18px; margin-bottom: 2px; }
         .nav-item-center { background: linear-gradient(180deg, #00ffcc, #009977); width: 42px; height: 42px; border-radius: 50%; justify-content: center; color: #fff !important; transform: translateY(-6px); }
-
-        /* মডাল */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 360px; border: 1px solid var(--primary-teal); position: relative; }
-        .close-btn { position: absolute; top: 12px; right: 18px; font-size: 22px; cursor: pointer; color: #aaa; }
-        .modal h2 { margin-bottom: 15px; color: var(--primary-teal); text-align: center; font-size: 18px; }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; margin-bottom: 4px; font-size: 13px; color: #ccc; }
-        .form-group input { width: 100%; padding: 10px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 14px; }
-        .submit-btn { width: 100%; padding: 12px; background: linear-gradient(180deg, #ffe600, #cc9900); border: none; color: #000; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 8px; }
     </style>
 </head>
 <body>
@@ -371,6 +363,7 @@
     <script>
         let sessionActive = false;
 
+        // লোডার মেকানিজম
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('appLoader');
@@ -387,12 +380,8 @@
             
             const targetView = document.getElementById(target + 'View');
             if(targetView) targetView.classList.add('active');
-            
-            if(element) {
-                element.classList.add('active');
-            } else {
-                if(target === 'home') document.querySelectorAll('.nav-item')[0].classList.add('active');
-            }
+            if(element) element.classList.add('active');
+            if(target === 'home') document.querySelectorAll('.nav-item')[0].classList.add('active');
         }
 
         function handleNavigationWithAuth(target, element) {
@@ -403,12 +392,11 @@
             if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
         }
 
-        // 🕹️ ইন-অ্যাপ গেম প্লে কন্ট্রোল লজিক (রিয়েল সাইটের মত)
         function playRealGameInApp(gameName, gameUrl) {
             if (!sessionActive) {
                 changeTab('loginPage');
             } else {
-                document.getElementById('activeGameTitle').innerText = gameName + " (CTH999 Active)";
+                document.getElementById('activeGameTitle').innerText = gameName;
                 document.getElementById('gameIframeWindow').src = gameUrl;
                 document.getElementById('gamePlayerModal').style.display = 'flex';
             }
@@ -416,7 +404,7 @@
 
         function closeGamePlayer() {
             document.getElementById('gamePlayerModal').style.display = 'none';
-            document.getElementById('gameIframeWindow').src = "about:blank"; // আইফ্রেম রিমুভ ইঞ্জিন
+            document.getElementById('gameIframeWindow').src = "about:blank";
         }
 
         function selectDepositAmount(amount) {
@@ -438,7 +426,6 @@
         function executeAuth(event) {
             event.preventDefault();
             sessionActive = true;
-            
             let emailInput = document.getElementById('loginEmail').value || "user@gmail.com";
             let extractedUser = emailInput.split('@')[0];
             
@@ -446,7 +433,6 @@
             document.getElementById('headerUserPanel').style.display = 'flex';
             document.getElementById('panelUser').innerText = extractedUser;
             document.getElementById('referralLinkField').value = "http://www.cth-999.vip/?r=" + extractedUser;
-            
             changeTab('home');
         }
 
@@ -456,6 +442,7 @@
             document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
         }, 3000);
 
+        // 🔗 RapidAPI এর ডেটা স্ট্রাকচারের সাথে মেলানোর জন্য ডাইনামিক ফ্রন্টএন্ড ইঞ্জিন
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
@@ -463,39 +450,53 @@
                     const container = document.getElementById('gameSectionsContainer');
                     let finalHTML = '';
 
-                    data.categories.forEach(cat => {
-                        let gridHTML = '';
-                        cat.list.forEach(game => {
-                            // 🕹️ এখানে গেম লিংকের প্যারামিটার 'playRealGameInApp' এ সিঙ্ক করা হয়েছে
-                            gridHTML += `
-                                <div class="game-card" onclick="playRealGameInApp('${game.name}', '${game.gameUrl}')">
-                                    <img class="game-img" src="${game.image}" alt="${game.name}">
-                                    <div class="game-info">${game.name}</div>
+                    // রিয়েল টাইম ডেটা সিঙ্কিং চেক
+                    if (data.categories && data.categories.length > 0) {
+                        data.categories.forEach(cat => {
+                            let gridHTML = '';
+                            cat.list.forEach(game => {
+                                gridHTML += `
+                                    <div class="game-card" onclick="playRealGameInApp('${game.name}', '${game.gameUrl}')">
+                                        <img class="game-img" src="${game.image}" alt="${game.name}">
+                                        <div class="game-info">${game.name}</div>
+                                    </div>
+                                `;
+                            });
+                            finalHTML += `
+                                <div class="section-header">
+                                    <div class="section-title">${cat.title}</div>
+                                    <div class="see-all">See All ›</div>
                                 </div>
+                                <div class="game-grid">${gridHTML}</div>
                             `;
                         });
+                    } else if (data.liveData) {
+                        // যদি শুধু RapidAPI এর রিলিজ ডেটা আসে তবে ব্যাকআপ গ্রিড রেন্ডার হবে
                         finalHTML += `
-                            <div class="section-header">
-                                <div class="section-title">${cat.title}</div>
-                                <div class="see-all">See All ›</div>
-                            </div>
-                            <div class="game-grid">${gridHTML}</div>
-                        `;
-                    });
+                            <div class="section-header"><div class="section-title">⚽ LIVE ODDS INPLAY</div></div>
+                            <div class="game-grid">
+                                <div class="game-card" onclick="alert('Betfair Live Event Loading...')">
+                                    <img class="game-img" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=300&q=80">
+                                    <div class="game-info">Betfair Market Active</div>
+                                </div>
+                            </div>`;
+                    }
                     container.innerHTML = finalHTML;
 
                     const menuContainer = document.getElementById('memberMenuGrid');
                     let menuHTML = '';
-                    data.memberMenu.forEach(item => {
-                        menuHTML += `
-                            <div class="menu-icon-box" onclick="alert('${item.name} opened.')">
-                                <div class="menu-circle">${item.icon}</div>
-                                <div class="menu-title">${item.name}</div>
-                            </div>
-                        `;
-                    });
-                    menuContainer.innerHTML = menuHTML;
-                });
+                    if (data.memberMenu) {
+                        data.memberMenu.forEach(item => {
+                            menuHTML += `
+                                <div class="menu-icon-box" onclick="alert('${item.name} opened.')">
+                                    <div class="menu-circle">${item.icon}</div>
+                                    <div class="menu-title">${item.name}</div>
+                                </div>`;
+                        });
+                        menuContainer.innerHTML = menuHTML;
+                    }
+                })
+                .catch(err => console.error("API format mismatched or loading serverless function failed.", err));
         });
     </script>
 </body>
