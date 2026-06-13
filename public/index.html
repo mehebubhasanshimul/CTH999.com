@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* ⏳ ডট লোডিং অ্যানিমেশন */
+        /* ⏳ uni-app স্টাইলের ডট লোডার */
         #appLoader {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--bg-dark-teal);
@@ -102,20 +102,14 @@
         .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; }
         .jackpot-counter { font-size: 24px; font-weight: bold; color: #fff; font-family: monospace; }
         
-        /* গেম গ্রিড */
+        /* গেম গ্রিড (৩ কলাম বিন্যাস) */
         .section-header { display: flex; justify-content: space-between; align-items: center; margin: 15px 0 10px 0; border-left: 3px solid var(--primary-teal); padding-left: 8px; }
         .section-title { font-size: 14px; font-weight: bold; color: var(--primary-teal); text-transform: uppercase; }
         .see-all { font-size: 12px; color: #8da1a5; cursor: pointer; }
         .game-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-        .game-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #0d4654; display: flex; flex-direction: column; cursor: pointer; }
-        .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .game-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid #0d4654; display: flex; flex-direction: column; cursor: pointer; position: relative; }
+        .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #04191f; }
         .game-info { padding: 5px; text-align: center; font-size: 10px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-        /* 🕹️ ইন-অ্যাপ গেম প্লে স্ক্রিন মোড */
-        #gamePlayerModal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 5000; flex-direction: column; }
-        .game-player-header { width: 100%; height: 45px; background: #04191f; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; border-bottom: 1px solid #0d4654; }
-        .exit-game-btn { var(--danger-red); color: #fff; border: none; padding: 6px 14px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 13px; }
-        .game-iframe { width: 100%; flex: 1; border: none; background: #000; }
 
         /* ডিপোজিট ও উইথড্র স্টাইল */
         .dep-label-title { font-size: 14px; font-weight: bold; color: #fff; margin: 15px 0 8px 0; border-left: 3px solid var(--btn-yellow); padding-left: 6px; }
@@ -151,8 +145,6 @@
         .reward-box { border-radius: 8px; padding: 18px; text-align: center; font-weight: bold; font-size: 14px; color: #fff; }
         .rew-1 { background: linear-gradient(135deg, #00b965, #00ebd3); }
         .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7); }
-        .rew-3 { background: linear-gradient(135deg, #f12711, #f5af19); }
-        .rew-4 { background: linear-gradient(135deg, #f857a6, #ff5858); }
         .member-bg { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
         .profile-card { background: #fff; padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 15px; }
         .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
@@ -163,16 +155,15 @@
         .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; }
         .menu-title { font-size: 10px; font-weight: 600; color: #555; }
 
-        /* 📱 প্রফেশনাল লগইন ইন্টারফেস ভিউ (7174.jpg లুকে) */
+        /* 📱 লগইন ইন্টারফেস */
         .login-view-container { max-width: 400px; margin: 40px auto; padding: 20px; text-align: center; }
         .login-title { font-size: 26px; font-weight: 900; color: #ffcc00; margin-bottom: 30px; letter-spacing: 1px; }
         .login-input-group { background: #04191f; border: 1px solid #1c6373; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
         .login-input-group input { background: transparent; border: none; width: 100%; color: #fff; font-size: 15px; font-weight: 600; }
-        .login-input-group input:focus { outline: none; }
         .login-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #8da1a5; margin: 15px 0 25px 0; }
         .yellow-submit-btn { width: 100%; padding: 14px; background: #ffcc00; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; color: #000; cursor: pointer; box-shadow: 0 4px 15px rgba(255,204,0,0.3); }
 
-        /* বটম বার */
+        /* Bottom Nav */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
         .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
         .nav-item.active { color: var(--primary-teal); }
@@ -192,14 +183,6 @@
             <div class="box-item box-ani6"></div>
         </div>
         <div class="loader-text">Loading secure lines... Please wait</div>
-    </div>
-
-    <div id="gamePlayerModal">
-        <div class="game-player-header">
-            <span style="font-weight: bold; color: var(--primary-teal);" id="activeGameTitle">Game Loading...</span>
-            <button class="exit-game-btn" onclick="closeGamePlayer()">✕ Close Game</button>
-        </div>
-        <iframe class="game-iframe" id="gameIframeWindow" src="about:blank"></iframe>
     </div>
 
     <header>
@@ -292,7 +275,6 @@
             <div class="withdraw-card-view">
                 <div class="w-card-brand">bKash (Bound 1/5)</div>
                 <div class="w-card-number">*******7524</div>
-                <button class="add-account-circle" onclick="alert('নতুন অ্যাকাউন্ট যোগ করার ফর্ম')">+</button>
             </div>
             <div class="info-row"><span>Withdrawal time</span><span>24 hours</span></div>
             <div class="info-row"><span>Main Wallet</span><span style="color:var(--primary-teal)">৳ 10.37</span></div>
@@ -304,66 +286,22 @@
         </div>
     </div>
 
-    <div id="promotionView" class="page-view">
-        <div class="promo-card">
-            <div class="promo-banner" style="background: linear-gradient(135deg, #0d3842, #174f5e);"></div>
-            <div class="promo-footer"><span>TAKAA ALLIANCE</span><button class="view-btn">view</button></div>
-        </div>
-    </div>
-
-    <div id="inviteView" class="page-view">
-        <div class="grid-stats">
-            <div class="stat-box stat-blue"><div class="stat-label">Today's Income</div>--</div>
-            <div class="stat-box stat-purple"><div class="stat-label">Yesterday's Income</div>--</div>
-        </div>
-        <div class="invite-box">
-            <input type="text" id="referralLinkField" value="http://www.cth-999.vip/?r=user" readonly>
-        </div>
-    </div>
-
-    <div id="rewardView" class="page-view">
-        <div class="reward-grid">
-            <div class="reward-box rew-1">Bonus</div>
-            <div class="reward-box rew-2">Sign In</div>
-        </div>
-    </div>
-
-    <div id="memberView" class="page-view">
-        <div class="member-bg">
-            <div class="profile-card">
-                <img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" alt="User">
-                <div class="profile-info">
-                    <h3 id="panelUser">User</h3>
-                    <p>Joined: 2026-06-14</p>
-                    <div class="balance-display">৳ <span id="panelBalance">10.37</span></div>
-                </div>
-            </div>
-            <div class="member-grid-menu" id="memberMenuGrid"></div>
-        </div>
-    </div>
+    <div id="promotionView" class="page-view"><div class="promo-card"><div class="promo-banner" style="background: linear-gradient(135deg, #0d3842, #174f5e);"></div><div class="promo-footer"><span>TAKAA ALLIANCE</span><button class="view-btn">view</button></div></div></div>
+    <div id="inviteView" class="page-view"><div class="grid-stats"><div class="stat-box stat-blue"><div class="stat-label">Today's Income</div>--</div></div><div class="invite-box"><input type="text" id="referralLinkField" value="http://www.cth-999.vip/?r=user" readonly></div></div>
+    <div id="rewardView" class="page-view"><div class="reward-grid"><div class="reward-box rew-1">Bonus</div><div class="reward-box rew-2">Sign In</div></div></div>
+    <div id="memberView" class="page-view"><div class="member-bg"><div class="profile-card"><img class="avatar-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80" alt="User"><div class="profile-info"><h3 id="panelUser">User</h3><p>Joined: 2026-06-14</p><div class="balance-display">৳ <span id="panelBalance">10.37</span></div></div></div><div class="member-grid-menu" id="memberMenuGrid"></div></div></div>
 
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="changeTab('home', this)">
-            <div class="nav-icon">🏠</div><div>Home</div>
-        </div>
-        <div class="nav-item" onclick="handleNavigationWithAuth('promotion', this)">
-            <div class="nav-icon">🎁</div><div>Promotion</div>
-        </div>
-        <div class="nav-item nav-item-center" onclick="handleNavigationWithAuth('invite', this)">
-            <div class="nav-icon">🔗</div>
-        </div>
-        <div class="nav-item" onclick="handleNavigationWithAuth('reward', this)">
-            <div class="nav-icon">🏆</div><div>Reward</div>
-        </div>
-        <div class="nav-item" onclick="handleNavigationWithAuth('member', this)">
-            <div class="nav-icon">👤</div><div>Member</div>
-        </div>
+        <div class="nav-item active" onclick="changeTab('home', this)"><div class="nav-icon">🏠</div><div>Home</div></div>
+        <div class="nav-item" onclick="handleNavigationWithAuth('promotion', this)"><div class="nav-icon">🎁</div><div>Promotion</div></div>
+        <div class="nav-item nav-item-center" onclick="handleNavigationWithAuth('invite', this)"><div class="nav-icon">🔗</div></div>
+        <div class="nav-item" onclick="handleNavigationWithAuth('reward', this)"><div class="nav-icon">🏆</div><div>Reward</div></div>
+        <div class="nav-item" onclick="handleNavigationWithAuth('member', this)"><div class="nav-icon">👤</div><div>Member</div></div>
     </div>
 
     <script>
         let sessionActive = false;
 
-        // লোডার মেকানিজম
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('appLoader');
@@ -392,19 +330,13 @@
             if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
         }
 
-        function playRealGameInApp(gameName, gameUrl) {
+        // 🕹️ সেফ ডিরেক্ট উইন্ডো প্লেয়ার ইঞ্জিন
+        function redirectAndPlayRealGame(gameName, gameUrl) {
             if (!sessionActive) {
                 changeTab('loginPage');
             } else {
-                document.getElementById('activeGameTitle').innerText = gameName;
-                document.getElementById('gameIframeWindow').src = gameUrl;
-                document.getElementById('gamePlayerModal').style.display = 'flex';
+                window.open(gameUrl, '_blank', 'noopener,noreferrer');
             }
-        }
-
-        function closeGamePlayer() {
-            document.getElementById('gamePlayerModal').style.display = 'none';
-            document.getElementById('gameIframeWindow').src = "about:blank";
         }
 
         function selectDepositAmount(amount) {
@@ -442,7 +374,7 @@
             document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
         }, 3000);
 
-        // 🔗 RapidAPI এর ডেটা স্ট্রাকচারের সাথে মেলানোর জন্য ডাইনামিক ফ্রন্টএন্ড ইঞ্জিন
+        // 🔗 ডাইনামিক এপিআই রেন্ডারিং কোর ইঞ্জিন (গেম আইকন ও নাম প্রদর্শন ফিক্স)
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
@@ -450,13 +382,13 @@
                     const container = document.getElementById('gameSectionsContainer');
                     let finalHTML = '';
 
-                    // রিয়েল টাইম ডেটা সিঙ্কিং চেক
+                    // চেক ১: কাস্টম ক্যাটাগরি ফরম্যাটে ডেটা রেন্ডার করা
                     if (data.categories && data.categories.length > 0) {
                         data.categories.forEach(cat => {
                             let gridHTML = '';
                             cat.list.forEach(game => {
                                 gridHTML += `
-                                    <div class="game-card" onclick="playRealGameInApp('${game.name}', '${game.gameUrl}')">
+                                    <div class="game-card" onclick="redirectAndPlayRealGame('${game.name}', '${game.gameUrl}')">
                                         <img class="game-img" src="${game.image}" alt="${game.name}">
                                         <div class="game-info">${game.name}</div>
                                     </div>
@@ -470,19 +402,34 @@
                                 <div class="game-grid">${gridHTML}</div>
                             `;
                         });
-                    } else if (data.liveData) {
-                        // যদি শুধু RapidAPI এর রিলিজ ডেটা আসে তবে ব্যাকআপ গ্রিড রেন্ডার হবে
-                        finalHTML += `
-                            <div class="section-header"><div class="section-title">⚽ LIVE ODDS INPLAY</div></div>
-                            <div class="game-grid">
-                                <div class="game-card" onclick="alert('Betfair Live Event Loading...')">
-                                    <img class="game-img" src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=300&q=80">
-                                    <div class="game-info">Betfair Market Active</div>
+                    } 
+                    // চেক ২: বেটফেয়ার লাইভ এপিআই (RapidAPI) অবজেক্ট ফরম্যাটে ডেটা ম্যাপ করা
+                    else if (data.liveData && data.liveData.results) {
+                        let liveGridHTML = '';
+                        // এপিআই থেকে প্রথম ৯টি লাইভ ম্যাচ/গেম লুপ করা হবে
+                        const items = data.liveData.results.slice(0, 9);
+                        items.forEach(item => {
+                            let gameTitle = item.marketName || "Betfair Active Room";
+                            let gameIcon = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=300&q=80"; // স্পোর্টস বুক ডিফল্ট আইকন
+                            
+                            liveGridHTML += `
+                                <div class="game-card" onclick="redirectAndPlayRealGame('${gameTitle}', 'https://betfair.com')">
+                                    <img class="game-img" src="${gameIcon}" alt="Game">
+                                    <div class="game-info">${gameTitle}</div>
                                 </div>
-                            </div>`;
+                            `;
+                        });
+                        finalHTML += `
+                            <div class="section-header">
+                                <div class="section-title">⚽ Betfair Live Feed (Inplay)</div>
+                                <div class="see-all">Live Track</div>
+                            </div>
+                            <div class="game-grid">${liveGridHTML}</div>
+                        `;
                     }
                     container.innerHTML = finalHTML;
 
+                    // মেম্বার কন্ট্রোল প্যানেল গ্রিড
                     const menuContainer = document.getElementById('memberMenuGrid');
                     let menuHTML = '';
                     if (data.memberMenu) {
@@ -496,7 +443,7 @@
                         menuContainer.innerHTML = menuHTML;
                     }
                 })
-                .catch(err => console.error("API format mismatched or loading serverless function failed.", err));
+                .catch(err => console.error("Front-end API Parsing Error: ", err));
         });
     </script>
 </body>
