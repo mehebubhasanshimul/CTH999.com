@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* ⏳ ডট লোডিং অ্যানিমেশন কন্টেইনার */
+        /* ⏳ ডট লোডিং অ্যানিমেশন */
         #appLoader {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--bg-dark-teal);
@@ -97,7 +97,7 @@
         .filter-btn { background: #09343f; border: 1px solid #1c6373; padding: 8px 16px; border-radius: 6px; color: #fff; font-size: 12px; font-weight: bold; cursor: pointer; }
         .filter-btn.active { background: var(--primary-teal); color: #000; border-color: var(--primary-teal); }
 
-        /* জ্যাকপট */
+        /* জ্যাককপট */
         .jackpot-container { background: linear-gradient(180deg, #04191f, #09343f); border-radius: 10px; padding: 15px; text-align: center; border: 1px solid #1c6373; margin-bottom: 15px; }
         .jackpot-title { color: #ffcc00; font-size: 18px; font-weight: 900; margin-bottom: 6px; text-transform: uppercase; }
         .jackpot-counter { font-size: 24px; font-weight: bold; color: #fff; font-family: monospace; }
@@ -111,33 +111,42 @@
         .game-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
         .game-info { padding: 5px; text-align: center; font-size: 10px; font-weight: bold; color: #fff; background: rgba(4, 25, 31, 0.9); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* 📊 ডিপোজিট পেজ স্টাইল (7172.jpg) */
+        /* 🎰 রিয়েল ইন-অ্যাপ গেম প্লে স্ক্রিন থিম */
+        #gamePlayerModal {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #000; z-index: 5000; flex-direction: column;
+        }
+        .game-player-header {
+            width: 100%; height: 45px; background: #04191f; display: flex; 
+            justify-content: space-between; align-items: center; padding: 0 15px;
+            border-bottom: 1px solid #0d4654;
+        }
+        .exit-game-btn { background: var(--danger-red); color: #fff; border: none; padding: 6px 14px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 13px; }
+        .game-iframe { width: 100%; flex: 1; border: none; background: #000; }
+
+        /* ডিপোজিট ও উইথড্র স্টাইল */
         .dep-label-title { font-size: 14px; font-weight: bold; color: #fff; margin: 15px 0 8px 0; border-left: 3px solid var(--btn-yellow); padding-left: 6px; }
         .method-flex { display: flex; gap: 10px; margin-bottom: 15px; }
         .method-card { background: #09343f; border: 1px solid #1c6373; padding: 12px; border-radius: 8px; text-align: center; width: 100px; cursor: pointer; font-weight: bold; font-size: 13px; }
-        .method-card.active { border-color: var(--primary-teal); background: #0c4352; box-shadow: 0 0 10px rgba(0,255,204,0.2); }
+        .method-card.active { border-color: var(--primary-teal); background: #0c4352; }
         .warning-box { background: rgba(255, 51, 51, 0.1); border: 1px solid var(--danger-red); border-radius: 8px; padding: 12px; font-size: 12px; color: #ff8888; line-height: 1.5; margin-bottom: 15px; }
         .channel-indicator { background: #04191f; padding: 12px; border-radius: 6px; border: 1px solid #1c6373; font-size: 13px; font-weight: bold; color: var(--primary-teal); margin-bottom: 15px; }
         .amt-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 15px; }
         .amt-btn { background: #09343f; border: 1px solid #1c6373; padding: 10px 2px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: bold; cursor: pointer; }
-        .amt-btn:hover { border-color: var(--btn-yellow); }
         .amt-input { width: 100%; padding: 12px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 15px; font-weight: bold; margin-bottom: 20px; text-align: center; }
         .next-btn { width: 100%; padding: 14px; background: #263a40; border: none; border-radius: 6px; color: #666; font-weight: bold; font-size: 15px; cursor: not-allowed; }
-
-        /* 🏦 উইথড্রয়াল পেজ স্টাইল (7173.jpg) */
-        .withdraw-card-view { background: linear-gradient(135deg, #00f2fe, #4facfe); padding: 20px; border-radius: 12px; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); position: relative; margin-bottom: 20px; }
+        
+        .withdraw-card-view { background: linear-gradient(135deg, #00f2fe, #4facfe); padding: 20px; border-radius: 12px; color: #fff; position: relative; margin-bottom: 20px; }
         .w-card-brand { font-size: 18px; font-weight: bold; }
         .w-card-number { font-size: 22px; font-weight: bold; margin: 15px 0; letter-spacing: 1px; }
-        .add-account-circle { position: absolute; bottom: -10px; right: 20px; background: var(--danger-red); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; cursor: pointer; border: none; box-shadow: 0 4px 10px rgba(255,51,51,0.4); }
+        .add-account-circle { position: absolute; bottom: -10px; right: 20px; background: var(--danger-red); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; cursor: pointer; border: none; }
         .info-row { display: flex; justify-content: space-between; font-size: 13px; color: #8da1a5; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #0d4654; }
 
-        /* প্রমোশন পেজ */
+        /* প্রমোশন, ইনভাইট, মেম্বার ভিউ */
         .promo-card { background: #09343f; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #1c6373; }
         .promo-banner { width: 100%; height: 130px; background: linear-gradient(135deg, #09343f, #1c6373); }
         .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
         .view-btn { background: #ffcc00; color: #000; border: none; padding: 4px 10px; font-size: 11px; font-weight: bold; border-radius: 4px; }
-
-        /* ইনভাইট পেজ */
         .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .stat-box { padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; color: #fff; }
         .stat-blue { background: linear-gradient(135deg, #2af598, #009efd); }
@@ -145,16 +154,12 @@
         .stat-label { font-size: 10px; opacity: 0.8; margin-bottom: 4px; }
         .invite-box { background: #fff; color: #000; padding: 15px; border-radius: 8px; text-align: center; }
         .invite-box input { width: 100%; padding: 8px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; text-align: center; margin-top: 5px; font-weight: bold; color: #333; }
-
-        /* রিওয়ার্ড পেজ */
         .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .reward-box { border-radius: 8px; padding: 18px; text-align: center; font-weight: bold; font-size: 14px; color: #fff; }
         .rew-1 { background: linear-gradient(135deg, #00b965, #00ebd3); }
         .rew-2 { background: linear-gradient(135deg, #0052d4, #4364f7); }
         .rew-3 { background: linear-gradient(135deg, #f12711, #f5af19); }
         .rew-4 { background: linear-gradient(135deg, #f857a6, #ff5858); }
-
-        /* মেম্বার প্রোফাইল */
         .member-bg { background: #f4f6f9; color: #333; padding: 15px; border-radius: 10px; }
         .profile-card { background: #fff; padding: 12px; border-radius: 8px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 15px; }
         .avatar-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
@@ -165,26 +170,26 @@
         .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; }
         .menu-title { font-size: 10px; font-weight: 600; color: #555; }
 
-        /* 📱 ৪. প্রফেশনাল লগইন ইন্টারফেস ভিউ (7174.jpg লুকে) */
-        .login-view-container { max-width: 400px; margin: 40px auto; padding: 20px; text-align: center; }
-        .login-title { font-size: 26px; font-weight: 900; color: #ffcc00; margin-bottom: 30px; letter-spacing: 1px; }
-        .login-input-group { background: #04191f; border: 1px solid #1c6373; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .login-input-group input { background: transparent; border: none; width: 100%; color: #fff; font-size: 15px; font-weight: 600; }
-        .login-input-group input:focus { outline: none; }
-        .login-meta { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #8da1a5; margin: 15px 0 25px 0; }
-        .yellow-submit-btn { width: 100%; padding: 14px; background: #ffcc00; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; color: #000; cursor: pointer; box-shadow: 0 4px 15px rgba(255,204,0,0.3); }
-
-        /* বটম বার */
+        /* বটম নেভিগেশন বার */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; background: #031418; border-top: 1px solid #0d4654; display: flex; justify-content: space-around; align-items: center; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; text-decoration: none; cursor: pointer; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: #8da1a5; font-size: 11px; font-weight: 600; cursor: pointer; }
         .nav-item.active { color: var(--primary-teal); }
         .nav-icon { font-size: 18px; margin-bottom: 2px; }
         .nav-item-center { background: linear-gradient(180deg, #00ffcc, #009977); width: 42px; height: 42px; border-radius: 50%; justify-content: center; color: #fff !important; transform: translateY(-6px); }
+
+        /* মডাল */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+        .modal-content { background: #09343f; padding: 25px; border-radius: 12px; width: 90%; max-width: 360px; border: 1px solid var(--primary-teal); position: relative; }
+        .close-btn { position: absolute; top: 12px; right: 18px; font-size: 22px; cursor: pointer; color: #aaa; }
+        .modal h2 { margin-bottom: 15px; color: var(--primary-teal); text-align: center; font-size: 18px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; margin-bottom: 4px; font-size: 13px; color: #ccc; }
+        .form-group input { width: 100%; padding: 10px; background: #04191f; border: 1px solid #1c6373; border-radius: 6px; color: #fff; font-size: 14px; }
+        .submit-btn { width: 100%; padding: 12px; background: linear-gradient(180deg, #ffe600, #cc9900); border: none; color: #000; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 8px; }
     </style>
 </head>
 <body>
 
-    <!-- ⏳ ডট লোডিং অ্যানিমেশন কন্টেইনার -->
     <div id="appLoader">
         <div class="box-block">
             <div class="box-item box-ani1"></div>
@@ -197,7 +202,14 @@
         <div class="loader-text">Loading secure lines... Please wait</div>
     </div>
 
-    <!-- হেডার বার -->
+    <div id="gamePlayerModal">
+        <div class="game-player-header">
+            <span style="font-weight: bold; color: var(--primary-teal);" id="activeGameTitle">Game Loading...</span>
+            <button class="exit-game-btn" onclick="closeGamePlayer()">✕ Close Game</button>
+        </div>
+        <iframe class="game-iframe" id="gameIframeWindow" src="about:blank"></iframe>
+    </div>
+
     <header>
         <div class="logo-area" onclick="changeTab('home')">
             <img class="logo-img" src="https://i.ibb.co.com/VY2bYFyM/file-000000008c0471fabea995621a1e9d56.png" alt="Logo">
@@ -228,7 +240,6 @@
         <button class="filter-btn" onclick="handleProtectedAction('Slots Category')">🎰 SLOTS</button>
     </div>
 
-    <!-- ১. হোম পেজ ভিউ -->
     <div id="homeView" class="page-view active">
         <div class="banner-box"></div>
         <div class="jackpot-container">
@@ -238,7 +249,6 @@
         <div id="gameSectionsContainer"></div>
     </div>
 
-    <!-- 📱 ৪. প্রফেশনাল লগইন ইন্টারফেস ভিউ (7174.jpg লুকে) -->
     <div id="loginPageView" class="page-view">
         <div class="login-view-container">
             <div class="login-title">CTH999.COM</div>
@@ -260,7 +270,6 @@
         </div>
     </div>
 
-    <!-- 📊 ২. ডিপোজিট পেজ ভিউ (7172.jpg থিম) -->
     <div id="depositView" class="page-view">
         <div class="deposit-panel">
             <div class="dep-label-title">Deposit Method</div>
@@ -286,13 +295,11 @@
         </div>
     </div>
 
-    <!-- 🏦 ৩. উইথড্রয়াল পেজ ভিউ (7173.jpg থিম) -->
     <div id="withdrawView" class="page-view">
         <div class="withdraw-panel">
             <div class="withdraw-card-view">
                 <div class="w-card-brand">bKash (Bound 1/5)</div>
                 <div class="w-card-number">*******7524</div>
-                <div class="w-card-footer">Time: 2026-05-29 13:30:26</div>
                 <button class="add-account-circle" onclick="alert('নতুন অ্যাকাউন্ট যোগ করার ফর্ম')">+</button>
             </div>
             <div class="info-row"><span>Withdrawal time</span><span>24 hours</span></div>
@@ -305,7 +312,6 @@
         </div>
     </div>
 
-    <!-- ৪. প্রমোশন পেজ ভিউ -->
     <div id="promotionView" class="page-view">
         <div class="promo-card">
             <div class="promo-banner" style="background: linear-gradient(135deg, #0d3842, #174f5e);"></div>
@@ -313,7 +319,6 @@
         </div>
     </div>
 
-    <!-- ৫. ইনভাইট পেজ ভিউ -->
     <div id="inviteView" class="page-view">
         <div class="grid-stats">
             <div class="stat-box stat-blue"><div class="stat-label">Today's Income</div>--</div>
@@ -324,7 +329,6 @@
         </div>
     </div>
 
-    <!-- ৬. রিওয়ার্ড পেজ ভিউ -->
     <div id="rewardView" class="page-view">
         <div class="reward-grid">
             <div class="reward-box rew-1">Bonus</div>
@@ -332,7 +336,6 @@
         </div>
     </div>
 
-    <!-- ৭. মেম্বার প্রোফাইল ভিউ -->
     <div id="memberView" class="page-view">
         <div class="member-bg">
             <div class="profile-card">
@@ -347,7 +350,6 @@
         </div>
     </div>
 
-    <!-- বটম নেভিগেশন বার -->
     <div class="bottom-nav">
         <div class="nav-item active" onclick="changeTab('home', this)">
             <div class="nav-icon">🏠</div><div>Home</div>
@@ -369,7 +371,6 @@
     <script>
         let sessionActive = false;
 
-        // ডট লোডার হাইড ইঞ্জিন
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const loader = document.getElementById('appLoader');
@@ -402,7 +403,22 @@
             if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
         }
 
-        // ডিপোজিট ক্যালকুলেশন
+        // 🕹️ ইন-অ্যাপ গেম প্লে কন্ট্রোল লজিক (রিয়েল সাইটের মত)
+        function playRealGameInApp(gameName, gameUrl) {
+            if (!sessionActive) {
+                changeTab('loginPage');
+            } else {
+                document.getElementById('activeGameTitle').innerText = gameName + " (CTH999 Active)";
+                document.getElementById('gameIframeWindow').src = gameUrl;
+                document.getElementById('gamePlayerModal').style.display = 'flex';
+            }
+        }
+
+        function closeGamePlayer() {
+            document.getElementById('gamePlayerModal').style.display = 'none';
+            document.getElementById('gameIframeWindow').src = "about:blank"; // আইফ্রেম রিমুভ ইঞ্জিন
+        }
+
         function selectDepositAmount(amount) {
             document.getElementById('depositInputBox').value = "৳ " + amount;
             const nextBtn = document.getElementById('depositNextSubmitBtn');
@@ -419,7 +435,6 @@
             }
         }
 
-        // 📧 জিমেইল অথেন্টিকেশন ইঞ্জিন
         function executeAuth(event) {
             event.preventDefault();
             sessionActive = true;
@@ -441,7 +456,6 @@
             document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
         }, 3000);
 
-        // 🕹️ ডাটা রেন্ডারিং মেকানিজম এবং ডেমো গেম উইন্ডো প্লেয়ার লজিক
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
@@ -452,9 +466,9 @@
                     data.categories.forEach(cat => {
                         let gridHTML = '';
                         cat.list.forEach(game => {
-                            // গেম কার্ডে ক্লিক করলে লগইন প্রোটেকশন চেক করবে এবং রিয়েল ডেমো লিংক নতুন উইন্ডোতে ওপেন করবে
+                            // 🕹️ এখানে গেম লিংকের প্যারামিটার 'playRealGameInApp' এ সিঙ্ক করা হয়েছে
                             gridHTML += `
-                                <div class="game-card" onclick="if(!sessionActive){ changeTab('loginPage'); } else { window.open('${game.gameUrl}', '_blank'); }">
+                                <div class="game-card" onclick="playRealGameInApp('${game.name}', '${game.gameUrl}')">
                                     <img class="game-img" src="${game.image}" alt="${game.name}">
                                     <div class="game-info">${game.name}</div>
                                 </div>
@@ -481,8 +495,7 @@
                         `;
                     });
                     menuContainer.innerHTML = menuHTML;
-                })
-                .catch(err => console.error("Error connecting to /api/loadMemberCenter. Make sure back-end function is live.", err));
+                });
         });
     </script>
 </body>
