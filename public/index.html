@@ -129,7 +129,7 @@
         .add-account-circle { position: absolute; bottom: -10px; right: 20px; background: var(--danger-red); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; cursor: pointer; border: none; }
         .info-row { display: flex; justify-content: space-between; font-size: 13px; color: #8da1a5; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #0d4654; }
 
-        /* প্রমোশন, ইনভাইট, মেম্বার ভিউ */
+        /* ভিউ উইন্ডো */
         .promo-card { background: #09343f; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #1c6373; }
         .promo-banner { width: 100%; height: 130px; background: linear-gradient(135deg, #09343f, #1c6373); }
         .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
@@ -155,7 +155,7 @@
         .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; }
         .menu-title { font-size: 10px; font-weight: 600; color: #555; }
 
-        /* 📱 লগইন ইন্টারফেস */
+        /* 📱 লগইন ইন্টারফেস ভিউ */
         .login-view-container { max-width: 400px; margin: 40px auto; padding: 20px; text-align: center; }
         .login-title { font-size: 26px; font-weight: 900; color: #ffcc00; margin-bottom: 30px; letter-spacing: 1px; }
         .login-input-group { background: #04191f; border: 1px solid #1c6373; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
@@ -330,7 +330,7 @@
             if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
         }
 
-        // 🕹️ সেফ ডিরেক্ট উইন্ডো প্লেয়ার ইঞ্জিন
+        // 🕹️ নিরাপদ ডিরেক্ট উইন্ডো প্লেয়ার ইঞ্জিন
         function redirectAndPlayRealGame(gameName, gameUrl) {
             if (!sessionActive) {
                 changeTab('loginPage');
@@ -374,7 +374,7 @@
             document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
         }, 3000);
 
-        // 🔗 ডাইনামিক এপিআই রেন্ডারিং কোর ইঞ্জিন (গেম আইকন ও নাম প্রদর্শন ফিক্স)
+        // 🔗 ডাইনামিক এপিআই রেন্ডারিং কোর ইঞ্জিন
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
@@ -404,13 +404,13 @@
                         });
                     } 
                     // চেক ২: বেটফেয়ার লাইভ এপিআই (RapidAPI) অবজেক্ট ফরম্যাটে ডেটা ম্যাপ করা
-                    else if (data.liveData && data.liveData.results) {
+                    if (data.liveData && data.liveData.results) {
                         let liveGridHTML = '';
-                        // এপিআই থেকে প্রথম ৯টি লাইভ ম্যাচ/গেম লুপ করা হবে
-                        const items = data.liveData.results.slice(0, 9);
-                        items.forEach(item => {
-                            let gameTitle = item.marketName || "Betfair Active Room";
-                            let gameIcon = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=300&q=80"; // স্পোর্টস বুক ডিফল্ট আইকন
+                        const items = data.liveData.results.slice(0, 3);
+                        items.forEach((item, index) => {
+                            let gameTitle = item.marketName || "Betfair Match";
+                            // 📸 ইমেজ ভাঙা সমস্যা দূর করতে আলাদা স্পোর্টস থাম্বনেইল এসাইন করা
+                            let gameIcon = index === 0 ? "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=300&q=80" : "https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=300&q=80";
                             
                             liveGridHTML += `
                                 <div class="game-card" onclick="redirectAndPlayRealGame('${gameTitle}', 'https://betfair.com')">
@@ -421,8 +421,8 @@
                         });
                         finalHTML += `
                             <div class="section-header">
-                                <div class="section-title">⚽ Betfair Live Feed (Inplay)</div>
-                                <div class="see-all">Live Track</div>
+                                <div class="section-title">⚽ SPORTS BETTING (LIVE)</div>
+                                <div class="see-all">See All ›</div>
                             </div>
                             <div class="game-grid">${liveGridHTML}</div>
                         `;
