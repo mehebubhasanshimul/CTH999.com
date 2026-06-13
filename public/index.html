@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* ⏳ uni-app স্টাইলের ডট লোডার */
+        /* ⏳ uni-app ডট লোডার */
         #appLoader {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), var(--bg-dark-teal);
@@ -129,7 +129,7 @@
         .add-account-circle { position: absolute; bottom: -10px; right: 20px; background: var(--danger-red); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; cursor: pointer; border: none; }
         .info-row { display: flex; justify-content: space-between; font-size: 13px; color: #8da1a5; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #0d4654; }
 
-        /* ভিউ উইন্ডো */
+        /* প্রমোশন, ইনভাইট, মেম্বার ভিউ */
         .promo-card { background: #09343f; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #1c6373; }
         .promo-banner { width: 100%; height: 130px; background: linear-gradient(135deg, #09343f, #1c6373); }
         .promo-footer { padding: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
@@ -155,7 +155,7 @@
         .menu-circle { width: 40px; height: 40px; border-radius: 50%; background: #fff; border: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: center; font-size: 18px; margin: 0 auto 4px auto; }
         .menu-title { font-size: 10px; font-weight: 600; color: #555; }
 
-        /* 📱 লগইন ইন্টারফেস ভিউ */
+        /* 📱 লগইন ইন্টারফেস */
         .login-view-container { max-width: 400px; margin: 40px auto; padding: 20px; text-align: center; }
         .login-title { font-size: 26px; font-weight: 900; color: #ffcc00; margin-bottom: 30px; letter-spacing: 1px; }
         .login-input-group { background: #04191f; border: 1px solid #1c6373; border-radius: 8px; padding: 12px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
@@ -221,6 +221,18 @@
             <div class="jackpot-title">🎰 Jackpot 🎰</div>
             <div class="jackpot-counter" id="jackpotBox">123,590,076.19</div>
         </div>
+        
+        <div class="section-header">
+            <div class="section-title">🚀 CRASH GAMES (POPULAR)</div>
+            <div class="see-all">Play Now ›</div>
+        </div>
+        <div class="game-grid" style="margin-bottom: 15px;">
+            <div class="game-card" onclick="redirectAndPlayRealGame('Aviator', 'https://aviator-demo.spribegaming.com/?currency=USD&operator=demo&jurisdiction=CW&lang=EN&return_url=https://spribe.co/games&user=11217&token=QLI9zp8EkArEUiEocyTCWWny472cclKi')">
+                <img class="game-img" src="https://i.ibb.co.com/7186.jpg" alt="Aviator">
+                <div class="game-info" style="background: #e61c24 !important;">Aviator (Demo Play)</div>
+            </div>
+        </div>
+
         <div id="gameSectionsContainer"></div>
     </div>
 
@@ -330,7 +342,7 @@
             if (!sessionActive) { changeTab('loginPage'); } else { alert(actionName + ' loaded.'); }
         }
 
-        // 🕹️ নিরাপদ ডিরেক্ট উইন্ডো প্লেয়ার ইঞ্জিন
+        // 🕹️ নিরাপদ প্লেয়ার ইঞ্জিন
         function redirectAndPlayRealGame(gameName, gameUrl) {
             if (!sessionActive) {
                 changeTab('loginPage');
@@ -374,7 +386,7 @@
             document.getElementById('jackpotBox').innerText = num.toLocaleString() + "." + (decimals < 10 ? '0' + decimals : decimals);
         }, 3000);
 
-        // 🔗 ডাইনামিক এপিআই রেন্ডারিং কোর ইঞ্জিন
+        // 🔗 ডাইনামিক এপিআই রেন্ডারিং কোর ইঞ্জিন (শুধুমাত্র রিয়েল এপিআই রেসপন্স হ্যান্ডলার)
         window.addEventListener('DOMContentLoaded', () => {
             fetch('/api/loadMemberCenter')
                 .then(res => res.json())
@@ -382,7 +394,7 @@
                     const container = document.getElementById('gameSectionsContainer');
                     let finalHTML = '';
 
-                    // চেক ১: কাস্টম ক্যাটাগরি ফরম্যাটে ডেটা রেন্ডার করা
+                    // শুধুমাত্র এপিআই-এর কাস্টম ক্যাটাগরি থাকলে তা লোড হবে (সব ফেক ডেমো রিমুভড)
                     if (data.categories && data.categories.length > 0) {
                         data.categories.forEach(cat => {
                             let gridHTML = '';
@@ -402,32 +414,8 @@
                                 <div class="game-grid">${gridHTML}</div>
                             `;
                         });
-                    } 
-                    // চেক ২: বেটফেয়ার লাইভ এপিআই (RapidAPI) অবজেক্ট ফরম্যাটে ডেটা ম্যাপ করা
-                    if (data.liveData && data.liveData.results) {
-                        let liveGridHTML = '';
-                        const items = data.liveData.results.slice(0, 3);
-                        items.forEach((item, index) => {
-                            let gameTitle = item.marketName || "Betfair Match";
-                            // 📸 ইমেজ ভাঙা সমস্যা দূর করতে আলাদা স্পোর্টস থাম্বনেইল এসাইন করা
-                            let gameIcon = index === 0 ? "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=300&q=80" : "https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=300&q=80";
-                            
-                            liveGridHTML += `
-                                <div class="game-card" onclick="redirectAndPlayRealGame('${gameTitle}', 'https://betfair.com')">
-                                    <img class="game-img" src="${gameIcon}" alt="Game">
-                                    <div class="game-info">${gameTitle}</div>
-                                </div>
-                            `;
-                        });
-                        finalHTML += `
-                            <div class="section-header">
-                                <div class="section-title">⚽ SPORTS BETTING (LIVE)</div>
-                                <div class="see-all">See All ›</div>
-                            </div>
-                            <div class="game-grid">${liveGridHTML}</div>
-                        `;
+                        container.innerHTML = finalHTML;
                     }
-                    container.innerHTML = finalHTML;
 
                     // মেম্বার কন্ট্রোল প্যানেল গ্রিড
                     const menuContainer = document.getElementById('memberMenuGrid');
@@ -443,7 +431,7 @@
                         menuContainer.innerHTML = menuHTML;
                     }
                 })
-                .catch(err => console.error("Front-end API Parsing Error: ", err));
+                .catch(err => console.error("API Fetch Error: ", err));
         });
     </script>
 </body>
